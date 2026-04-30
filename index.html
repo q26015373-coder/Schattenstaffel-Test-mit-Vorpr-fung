@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schattenstaffel - Finales Archiv</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;500;700&display=swap');
+        
+        :root {
+            --republic-red: #cc0000;
+            --dark-bg: #030305;
+            --accent-glow: rgba(204, 0, 0, 0.4);
+        }
+
+        * { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #d1d5db;
+            font-family: 'JetBrains Mono', monospace;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(204, 0, 0, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(18, 18, 22, 0.9) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(18, 18, 22, 0.9) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .nav-item {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .terminal-panel {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(12px);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .red-header {
+            background: linear-gradient(90deg, var(--republic-red), transparent);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 0% 100%);
+        }
+
+        .data-label {
+            font-size: 0.65rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .data-value {
+            font-size: 0.9rem;
+            color: #f3f4f6;
+            font-weight: 700;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .quiz-option:hover {
+            background: rgba(204, 0, 0, 0.15);
+            border-color: var(--republic-red);
+            transform: translateX(5px);
+        }
+
+        .tactic-card {
+            border-left: 4px solid var(--republic-red);
+            background: linear-gradient(90deg, rgba(204, 0, 0, 0.05), transparent);
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tactic-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.05) 51%);
+            background-size: 100% 4px;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(204, 0, 0, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .official-test-btn {
+            background: var(--republic-red);
+            color: white;
+            padding: 1rem 2rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-top: 2rem;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .official-test-btn:hover {
+            background: #ff0000;
+            box-shadow: 0 0 30px var(--republic-red);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="pt-20">
+    <div class="scanline"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[100] bg-black/95 border-b border-white/10 backdrop-blur-2xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-red-700 flex items-center justify-center font-black text-white italic text-2xl shadow-lg shadow-red-900/20">S</div>
+                <div>
+                    <span class="text-white font-black text-sm uppercase tracking-tighter block leading-none">Schattenstaffel</span>
+                    <span class="text-[8px] text-red-500 font-bold uppercase tracking-[0.3em]">Republik-Datenbank</span>
+                </div>
+            </div>
+            <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-neutral-400">
+                <a href="#archiv" class="hover:text-red-500 transition">Archiv</a>
+                <a href="#taktik" class="hover:text-red-500 transition">Einsatz</a>
+                <a href="#prüfung" class="text-red-600 border border-red-600 px-4 py-2 hover:bg-red-600 hover:text-white transition shadow-lg shadow-red-900/20">Zertifizierung</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative py-32 px-6 flex flex-col items-center justify-center text-center">
+        <div class="hero-glow"></div>
+        <div class="space-y-6">
+            <p class="text-red-600 font-black uppercase tracking-[0.8em] text-[10px]">Koensayr-Produktionsgesellschaft</p>
+            <h1 class="text-6xl md:text-9xl font-black text-white uppercase italic tracking-tighter">BTL-B Y-Wing</h1>
+            <div class="w-32 h-1.5 bg-red-700 mx-auto"></div>
+            <p class="text-neutral-500 text-sm max-w-xl mx-auto uppercase tracking-widest font-bold italic">Leitung: CPO Kaze und SDO Spark</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-20 space-y-40">
+
+        <!-- Sektion: Technisches Archiv -->
+        <section id="archiv" class="scroll-mt-32 space-y-16">
+            <div class="red-header">Technisches Archiv</div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Kerndaten -->
+                <div class="terminal-panel p-8 border-t-2 border-t-red-600">
+                    <h3 class="text-white font-black text-xs mb-8 uppercase tracking-widest flex items-center gap-2">
+                        <span class="w-2 h-2 bg-red-600"></span> Kerndaten
+                    </h3>
+                    <div class="space-y-6">
+                        <div><span class="data-label">Hersteller</span><span class="data-value">Koensayr-Produktionsgesellschaft</span></div>
+                        <div><span class="data-label">Marktwert</span><span class="data-value">127.000 Credits</span></div>
+                        <div><span class="data-label">Länge</span><span class="data-value">23,4 Meter</span></div>
+                        <div><span class="data-label">Besatzung</span><span class="data-value">1 Pilot, 1 Kanonier, 1 Astromech</span></div>
+                    </div>
+                </div>
+
+                <!-- Antrieb -->
+                <div class="terminal-panel p-8">
+                    <h3 class="text-white font-black text-xs mb-8 uppercase tracking-widest flex items-center gap-2">
+                        <span class="w-2 h-2 bg-red-600"></span> Triebwerk & Speed
+                    </h3>
+                    <div class="space-y-6">
+                        <div><span class="data-label">Max. Atmosphäre (Lore)</span><span class="data-value">950 km/h</span></div>
+                        <div><span class="data-label">Simulations-V-Max (Server)</span><span class="data-value text-red-500">215 km/h</span></div>
+                        <div><span class="data-label">Antrieb</span><span class="data-value">2 schwere Ionendüsen / 3 Repulsoren</span></div>
+                        <div><span class="data-label">Hyperraum</span><span class="data-value">Klasse 2</span></div>
+                    </div>
+                </div>
+
+                <!-- Verteidigung -->
+                <div class="terminal-panel p-8">
+                    <h3 class="text-white font-black text-xs mb-8 uppercase tracking-widest flex items-center gap-2">
+                        <span class="w-2 h-2 bg-red-600"></span> Panzerung & Defensiv
+                    </h3>
+                    <div class="space-y-6">
+                        <div><span class="data-label">Hüllenstruktur</span><span class="data-value">Titanverst. Alustahlpanzerplatten</span></div>
+                        <div><span class="data-label">Schutzschilde</span><span class="data-value">2 Schildprojektorgruppen (Deflektor)</span></div>
+                        <div><span class="data-label">Energie</span><span class="data-value">Reaktor / 2 Backup-Batterien</span></div>
+                        <div><span class="data-label">Fluchtsystem</span><span class="data-value">Cockpit-Abkopplungsmechanismus</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bewaffnung -->
+            <div class="terminal-panel p-8 bg-gradient-to-r from-red-950/10 to-transparent">
+                <h3 class="text-white font-black text-xs mb-8 uppercase tracking-widest">Waffensystem-Konfiguration</h3>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="border-l border-white/10 pl-4"><span class="data-label">Primär</span><span class="data-value">2 Laserkanonen</span></div>
+                    <div class="border-l border-white/10 pl-4"><span class="data-label">Turm</span><span class="data-value">Anti-Sternjäger-Doppel-Ionenkanone</span></div>
+                    <div class="border-l border-white/10 pl-4"><span class="data-label">Torpedos</span><span class="data-value">2 Werfer (12 Torpedos)</span></div>
+                    <div class="border-l border-white/10 pl-4"><span class="data-label">Spezial</span><span class="data-value">Integrierte Protonenbomben</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sektion: Einsatz-Taktik -->
+        <section id="taktik" class="scroll-mt-32 space-y-16">
+            <div class="red-header">Taktisches Protokoll</div>
+            
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="tactic-card">
+                    <div class="text-red-600 font-black text-4xl mb-4">01</div>
+                    <h4 class="text-white font-bold uppercase text-sm mb-4">AAT Bekämpfung</h4>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Anflug im <span class="text-white underline">Sturzflug</span> direkt über dem Ziel einleiten. Bombenabwurf während der Sinkphase auslösen, um die schwächere Dachpanzerung des Panzers zu penetrieren.
+                    </p>
+                </div>
+                <div class="tactic-card">
+                    <div class="text-red-600 font-black text-4xl mb-4">02</div>
+                    <h4 class="text-white font-bold uppercase text-sm mb-4">AA-Geschütz Umgehung</h4>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Anflug konsequent <span class="text-white underline">unter dem Pfeiler</span> durchführen. Das Geschütz besitzt einen mechanischen toten Winkel nach unten. Erst am Abwurfpunkt steil hochziehen.
+                    </p>
+                </div>
+                <div class="tactic-card">
+                    <div class="text-red-600 font-black text-4xl mb-4">03</div>
+                    <h4 class="text-white font-bold uppercase text-sm mb-4">Homing Spider Droide</h4>
+                    <p class="text-xs text-neutral-400 leading-relaxed">
+                        Anflug von oben. Präziser Bombenabwurf auf die <span class="text-white underline">Beingelenke</span>. Ziel ist die Zerstörung der Balance-Aktuatoren, um die Einheit zum Umkippen zu bringen.
+                    </p>
+                </div>
+            </div>
+
+            <div class="terminal-panel p-8 border-l-4 border-red-600">
+                <h4 class="text-white font-bold uppercase text-xs mb-6 tracking-widest">Betriebsanweisungen (Schattenstaffel)</h4>
+                <ul class="grid md:grid-cols-2 gap-x-12 gap-y-4 text-[10px] uppercase font-bold text-neutral-400">
+                    <li class="flex items-center gap-3"><span class="text-red-600 text-lg">■</span> Abwurf-Auslöser LANGE gedrückt halten</li>
+                    <li class="flex items-center gap-3"><span class="text-red-600 text-lg">■</span> Max. 1 Reparatur pro Einsatzzyklus</li>
+                    <li class="flex items-center gap-3"><span class="text-red-600 text-lg">■</span> Aufmunitionierung jederzeit im Hangar</li>
+                    <li class="flex items-center gap-3"><span class="text-red-600 text-lg">■</span> 19 Plätze für reguläre Staffel-Piloten</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Zertifizierung (Quiz) -->
+        <section id="prüfung" class="scroll-mt-32 py-20 border-t border-white/5">
+            <div class="max-w-4xl mx-auto terminal-panel p-12 shadow-2xl shadow-red-900/10">
+                <div id="quiz-container">
+                    <div class="flex justify-between items-center mb-12">
+                        <span id="q-count" class="text-red-600 font-black text-[10px] tracking-[0.4em] uppercase">Initialisiere Prüfung</span>
+                        <div class="w-32 h-1 bg-white/5 relative">
+                            <div id="progress" class="absolute left-0 top-0 h-full bg-red-600 w-0 transition-all"></div>
+                        </div>
+                    </div>
+                    <h3 id="q-text" class="text-2xl text-white font-bold mb-12 italic">Lade Verschlüsselung...</h3>
+                    <div id="q-options" class="grid md:grid-cols-2 gap-6"></div>
+                </div>
+
+                <div id="result-box" class="hidden text-center space-y-10">
+                    <h3 class="text-4xl font-black text-white uppercase italic tracking-tighter">Status: Zertifizierung</h3>
+                    <div id="final-score" class="text-9xl font-black text-red-600">0/10</div>
+                    <p id="feedback" class="text-neutral-400 text-sm max-w-md mx-auto italic leading-relaxed"></p>
+                    
+                    <div class="flex flex-col items-center gap-4">
+                        <a href="https://q26015373-coder.github.io/Schattenstaffel-Auswahltest/" target="_blank" class="official-test-btn">
+                            Zum Offiziellen Auswahltest
+                        </a>
+                        <button onclick="location.reload()" class="text-neutral-600 text-[10px] uppercase font-bold tracking-widest hover:text-white transition">Archiv-Test wiederholen</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-24 bg-black border-t border-white/5 text-center">
+        <div class="opacity-10 grayscale italic font-black text-6xl uppercase tracking-[1em] mb-12">Schattenstaffel</div>
+        <p class="text-[9px] text-neutral-600 uppercase tracking-[0.6em] font-bold">Galaktisches Militärarchiv // Autorisiert durch CPO Kaze & SDO Spark</p>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                q: "Welches Ziel muss beim Homing Spider Droiden getroffen werden, um ihn umzuwerfen?",
+                o: ["Die Zentrale Linse", "Die Bein-Gelenke", "Der obere Laser", "Das Heck-Modul"],
+                a: 1
+            },
+            {
+                q: "Wie lautet die server-spezifische (Simulations-) V-Max?",
+                o: ["950 km/h", "215 km/h", "127 km/h", "500 km/h"],
+                a: 1
+            },
+            {
+                q: "Welches taktische Manöver ist gegen AAT-Panzer vorgeschrieben?",
+                o: ["Seitlicher Beschuss", "Unterflug", "Sturzflug von oben", "Keine Bomben nutzen"],
+                a: 2
+            },
+            {
+                q: "Was ist beim Auslösen der Bomben technisch zwingend?",
+                o: ["Kurz tippen", "Lange gedrückt halten", "Doppelklick", "Nur bei 0 km/h"],
+                a: 1
+            },
+            {
+                q: "Wie lautet der volle Name des Heckgeschützes?",
+                o: ["Laser-Batterie", "Anti-Sternjäger-Doppel-Ionenkanonenturm", "Ionen-Flak 2x", "Heck-Abwehr"],
+                a: 1
+            },
+            {
+                q: "Warum ist ein Anflug unter dem Pfeiler eines AA-Geschützes sicher?",
+                o: ["Wegen der Tarnung", "Toter Winkel des Geschützes nach unten", "Die Schilde sind dort stärker", "Kein Radar-Kontakt"],
+                a: 1
+            },
+            {
+                q: "Aus welchem Material bestehen die Panzerplatten?",
+                o: ["Reiner Durastahl", "Titanverstärkter Alustahl", "Carbonit-Legierung", "Polymer-Verbund"],
+                a: 1
+            },
+            {
+                q: "Wie viele reguläre Staffel-Plätze existieren?",
+                o: ["21", "12", "19", "25"],
+                a: 2
+            },
+            {
+                q: "Wie hoch ist die lore-getreue Maximalgeschwindigkeit?",
+                o: ["950 km/h", "1100 km/h", "215 km/h", "750 km/h"],
+                a: 0
+            },
+            {
+                q: "Welche Fluchtmöglichkeit bietet der Y-Wing im Notfall?",
+                o: ["Schleudersitz", "Cockpit-Abkopplung", "Teleport-Modul", "Rettungskapsel im Heck"],
+                a: 1
+            }
+        ];
+
+        let cur = 0, score = 0;
+
+        function loadQuestion() {
+            if (cur >= questions.length) {
+                showResults();
+                return;
+            }
+            const q = questions[cur];
+            document.getElementById('q-count').innerText = `DATENSATZ-ABFRAGE ${cur + 1}/10`;
+            document.getElementById('q-text').innerText = q.q;
+            document.getElementById('progress').style.width = `${(cur / questions.length) * 100}%`;
+            
+            const optCont = document.getElementById('q-options');
+            optCont.innerHTML = '';
+            
+            q.o.forEach((opt, idx) => {
+                const b = document.createElement('div');
+                b.className = 'quiz-option text-[10px] font-bold uppercase tracking-widest';
+                b.innerHTML = `<span class="text-red-600 mr-3">0${idx+1}</span> ${opt}`;
+                b.onclick = () => { if(idx === q.a) score++; cur++; loadQuestion(); };
+                optCont.appendChild(b);
+            });
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            const res = document.getElementById('result-box');
+            res.classList.remove('hidden');
+            document.getElementById('final-score').innerText = `${score}/10`;
+            
+            let feedback = "";
+            if (score === 10) feedback = "Herausragend. Sie sind eine Bereicherung für die Schattenstaffel. Setzen Sie Ihre Rekrutierung über den offiziellen Auswahltest fort.";
+            else if (score >= 7) feedback = "Zertifizierung bestanden. Sie zeigen solides technisches Verständnis. Begeben Sie sich zum Auswahltest.";
+            else feedback = "Zertifizierung mangelhaft. Das Archivstudium wird empfohlen, bevor Sie den offiziellen Auswahltest antreten.";
+            
+            document.getElementById('feedback').innerText = feedback;
+        }
+
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>
