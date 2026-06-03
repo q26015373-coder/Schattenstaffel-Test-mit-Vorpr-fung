@@ -10,96 +10,142 @@
         
         :root {
             --republic-red: #cc0000;
+            --republic-red-glow: rgba(204, 0, 0, 0.4);
             --dark-bg: #030305;
-            --accent-glow: rgba(204, 0, 0, 0.4);
+            --terminal-green: #10b981;
         }
 
-        * { scroll-behavior: smooth; }
+        * { 
+            scroll-behavior: smooth; 
+            box-sizing: border-box;
+        }
 
         body {
             background-color: var(--dark-bg);
-            color: #d1d5db;
+            color: #ffffff;
             font-family: 'JetBrains Mono', monospace;
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(204, 0, 0, 0.05) 0%, transparent 50%),
-                linear-gradient(rgba(18, 18, 22, 0.9) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(18, 18, 22, 0.9) 1px, transparent 1px);
+                radial-gradient(circle at 50% 20%, rgba(204, 0, 0, 0.07) 0%, transparent 60%),
+                linear-gradient(rgba(18, 18, 22, 0.95) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(18, 18, 22, 0.95) 1px, transparent 1px);
             background-size: 100% 100%, 30px 30px, 30px 30px;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .nav-item {
+        h1, h2, h3, h4, .nav-item, .orbitron-font {
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 2px;
+            color: #ffffff;
         }
 
         .terminal-panel {
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(10, 10, 15, 0.9);
-            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(8, 8, 12, 0.85);
+            backdrop-filter: blur(16px);
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
         }
 
+        /* Sci-Fi Eckenelemente für Panels (In Rot gehalten) */
+        .terminal-panel::before, .terminal-panel::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-color: var(--republic-red);
+            border-style: solid;
+            pointer-events: none;
+        }
+        .terminal-panel::before {
+            top: -1px; left: -1px;
+            border-width: 2px 0 0 2px;
+        }
+        .terminal-panel::after {
+            bottom: -1px; right: -1px;
+            border-width: 0 2px 2px 0;
+        }
+
+        /* Kopfzeile mit rotem Verlauf und Akzentstreifen */
         .red-header {
             background: linear-gradient(90deg, var(--republic-red), transparent);
-            color: white;
-            padding: 0.6rem 1.2rem;
+            border-left: 3px solid #ffffff;
+            color: #ffffff;
+            padding: 0.6rem 1.5rem;
             font-weight: 900;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             display: inline-block;
             margin-bottom: 1.5rem;
-            clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 93% 0%, 100% 100%, 0% 100%);
+            box-shadow: 2px 2px 10px rgba(204, 0, 0, 0.2);
         }
 
         .data-label {
             font-size: 0.65rem;
-            color: #6b7280;
+            color: #ffffff;
+            opacity: 0.7;
             text-transform: uppercase;
             display: block;
             margin-bottom: 2px;
+            letter-spacing: 1px;
         }
 
         .data-value {
-            font-size: 0.9rem;
-            color: #f3f4f6;
+            font-size: 0.95rem;
+            color: #ffffff;
             font-weight: 700;
         }
 
         .quiz-option {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             padding: 1.25rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
         }
 
         .quiz-option:hover {
-            background: rgba(204, 0, 0, 0.15);
+            background: rgba(204, 0, 0, 0.1);
             border-color: var(--republic-red);
-            transform: translateX(5px);
+            transform: translateX(6px);
+        }
+
+        .quiz-option.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: var(--terminal-green) !important;
+            color: #ffffff !important;
+        }
+
+        .quiz-option.incorrect {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            color: #ffffff !important;
         }
 
         .tactic-card {
             border-left: 4px solid var(--republic-red);
-            background: linear-gradient(90deg, rgba(204, 0, 0, 0.05), transparent);
+            background: linear-gradient(90deg, rgba(204, 0, 0, 0.04), transparent);
             padding: 2rem;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .tactic-card:hover {
             transform: translateY(-5px);
+            background: linear-gradient(90deg, rgba(204, 0, 0, 0.08), rgba(204, 0, 0, 0.02));
+            box-shadow: 0 10px 20px rgba(204, 0, 0, 0.15);
         }
 
         .scanline {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.05) 51%);
+            background: linear-gradient(to bottom, transparent 50%, rgba(204,0,0,0.02) 51%);
             background-size: 100% 4px;
             z-index: 1000;
             pointer-events: none;
-            opacity: 0.3;
+            opacity: 0.25;
         }
 
         .hero-glow {
@@ -107,107 +153,111 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(204, 0, 0, 0.1) 0%, transparent 70%);
+            width: 75%;
+            height: 75%;
+            background: radial-gradient(circle, rgba(204, 0, 0, 0.12) 0%, transparent 70%);
             z-index: -1;
         }
 
         .official-test-btn {
             background: var(--republic-red);
-            color: white;
-            padding: 1rem 2rem;
+            color: #ffffff;
+            padding: 1.2rem 2.5rem;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             display: inline-block;
-            margin-top: 2rem;
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 25px var(--republic-red-glow);
             transition: all 0.3s;
-            border: 1px solid transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
         }
 
         .official-test-btn:hover {
             background: #ff0000;
-            box-shadow: 0 0 30px var(--republic-red);
-            transform: scale(1.05);
+            box-shadow: 0 0 35px #ff0000;
+            transform: translateY(-2px);
         }
     </style>
 </head>
-<body class="pt-20">
+<body class="pt-24">
     <div class="scanline"></div>
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-[100] bg-black/95 border-b border-white/10 backdrop-blur-2xl">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-red-700 flex items-center justify-center font-black text-white italic text-2xl shadow-lg shadow-red-900/20">S</div>
+                <div class="w-12 h-12 bg-red-700 flex items-center justify-center font-black text-white italic text-2xl shadow-lg border border-white/15">S</div>
                 <div>
                     <span class="text-white font-black text-sm uppercase tracking-tighter block leading-none">Schattenstaffel</span>
-                    <span class="text-[8px] text-red-500 font-bold uppercase tracking-[0.3em]">Republik-Datenbank</span>
+                    <span class="text-[8px] text-white font-bold uppercase tracking-[0.3em]">Republik-Datenbank</span>
                 </div>
             </div>
-            <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-neutral-400">
-                <a href="#archiv" class="hover:text-red-500 transition">Archiv</a>
-                <a href="#taktik" class="hover:text-red-500 transition">Einsatz</a>
-                <a href="#prüfung" class="text-red-600 border border-red-600 px-4 py-2 hover:bg-red-600 hover:text-white transition shadow-lg shadow-red-900/20">Zertifizierung</a>
+            <div class="flex gap-4 md:gap-8 text-[10px] font-bold uppercase tracking-widest text-neutral-400">
+                <a href="#archiv" class="hover:text-white transition self-center">Archiv</a>
+                <a href="#diagnose" class="hover:text-white transition self-center hidden sm:inline">Diagnose</a>
+                <a href="#taktik" class="hover:text-white transition self-center">Einsatz</a>
+                <a href="#prüfung" class="text-white border border-red-600/50 px-3 py-2 hover:bg-red-600 hover:text-white transition shadow-lg">Zertifizierung</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative py-32 px-6 flex flex-col items-center justify-center text-center">
+    <header class="relative py-24 px-6 flex flex-col items-center justify-center text-center overflow-hidden">
         <div class="hero-glow"></div>
-        <div class="space-y-6">
-            <p class="text-red-600 font-black uppercase tracking-[0.8em] text-[10px]">Koensayr-Produktionsgesellschaft</p>
-            <h1 class="text-6xl md:text-9xl font-black text-white uppercase italic tracking-tighter">BTL-B Y-Wing</h1>
-            <div class="w-32 h-1.5 bg-red-700 mx-auto"></div>
-            <p class="text-neutral-500 text-sm max-w-xl mx-auto uppercase tracking-widest font-bold italic">Leitung: CPO Kaze und SDO Spark</p>
+        <div class="space-y-6 z-10">
+            <p class="text-white font-black uppercase tracking-[0.8em] text-[10px] md:text-xs">Koensayr-Produktionsgesellschaft</p>
+            <h1 class="text-5xl md:text-8xl lg:text-9xl font-black text-white uppercase italic tracking-tighter">BTL-B Y-Wing</h1>
+            <div class="w-40 h-1 bg-white mx-auto my-4"></div>
+            <p class="text-white text-xs md:text-sm max-w-xl mx-auto uppercase tracking-widest font-bold italic">
+                Militärisches Archiv-Terminal // Freigabe: CPO Kaze & SDO Spark
+            </p>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 py-20 space-y-40">
+    <main class="max-w-7xl mx-auto px-6 py-12 space-y-32">
 
         <!-- Sektion: Technisches Archiv -->
         <section id="archiv" class="scroll-mt-32 space-y-16">
             <div class="red-header">Technisches Archiv</div>
             
-            <div class="grid lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Kerndaten -->
-                <div class="terminal-panel p-8 border-t-2 border-t-red-600">
+                <div class="terminal-panel p-8">
                     <h3 class="text-white font-black text-xs mb-8 uppercase tracking-widest flex items-center gap-2">
-                        <span class="w-2 h-2 bg-red-600"></span> Kerndaten
+                        <span class="w-2 h-2 bg-white"></span> Kerndaten
                     </h3>
                     <div class="space-y-6">
                         <div><span class="data-label">Hersteller</span><span class="data-value">Koensayr-Produktionsgesellschaft</span></div>
                         <div><span class="data-label">Marktwert</span><span class="data-value">127.000 Credits</span></div>
                         <div><span class="data-label">Länge</span><span class="data-value">23,4 Meter</span></div>
                         <div><span class="data-label">Besatzung</span><span class="data-value">1 Pilot, 1 Kanonier, 1 Astromech</span></div>
+                        <div><span class="data-label">Astromech-Position</span><span class="data-value">Mitte der Antriebe (hinter dem Gunner)</span></div>
                     </div>
                 </div>
 
                 <!-- Antrieb -->
                 <div class="terminal-panel p-8">
                     <h3 class="text-white font-black text-xs mb-8 uppercase tracking-widest flex items-center gap-2">
-                        <span class="w-2 h-2 bg-red-600"></span> Triebwerk & Speed
+                        <span class="w-2 h-2 bg-white"></span> Triebwerk & Speed
                     </h3>
                     <div class="space-y-6">
                         <div><span class="data-label">Max. Atmosphäre (Lore)</span><span class="data-value">950 km/h</span></div>
-                        <div><span class="data-label">Simulations-V-Max (Server)</span><span class="data-value text-red-500">215 km/h</span></div>
+                        <div><span class="data-label">Simulations-V-Max (Server)</span><span class="data-value">215 km/h</span></div>
                         <div><span class="data-label">Antrieb</span><span class="data-value">2 schwere Ionendüsen / 3 Repulsoren</span></div>
-                        <div><span class="data-label">Hyperraum</span><span class="data-value">Klasse 2</span></div>
+                        <div><span class="data-label">Hyperraum</span><span class="data-value">Klasse 1.0</span></div>
                     </div>
                 </div>
 
                 <!-- Verteidigung -->
-                <div class="terminal-panel p-8">
+                <div class="terminal-panel p-8 md:col-span-2 lg:col-span-1">
                     <h3 class="text-white font-black text-xs mb-8 uppercase tracking-widest flex items-center gap-2">
-                        <span class="w-2 h-2 bg-red-600"></span> Panzerung & Defensiv
+                        <span class="w-2 h-2 bg-white"></span> Panzerung & Defensiv
                     </h3>
                     <div class="space-y-6">
                         <div><span class="data-label">Hüllenstruktur</span><span class="data-value">Titanverst. Alustahlpanzerplatten</span></div>
-                        <div><span class="data-label">Schutzschilde</span><span class="data-value">2 Schildprojektorgruppen (Deflektor)</span></div>
+                        <div><span class="data-label">Schutzschilde</span><span class="data-value">Deflektor-Schildgenerator (2 Gruppen)</span></div>
                         <div><span class="data-label">Energie</span><span class="data-value">Reaktor / 2 Backup-Batterien</span></div>
                         <div><span class="data-label">Fluchtsystem</span><span class="data-value">Cockpit-Abkopplungsmechanismus</span></div>
                     </div>
@@ -216,13 +266,90 @@
 
             <!-- Bewaffnung -->
             <div class="terminal-panel p-8 bg-gradient-to-r from-red-950/10 to-transparent">
-                <h3 class="text-white font-black text-xs mb-8 uppercase tracking-widest">Waffensystem-Konfiguration</h3>
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div class="border-l border-white/10 pl-4"><span class="data-label">Primär</span><span class="data-value">2 Laserkanonen</span></div>
-                    <div class="border-l border-white/10 pl-4"><span class="data-label">Turm</span><span class="data-value">Anti-Sternjäger-Doppel-Ionenkanone</span></div>
-                    <div class="border-l border-white/10 pl-4"><span class="data-label">Torpedos</span><span class="data-value">2 Werfer (12 Torpedos)</span></div>
-                    <div class="border-l border-white/10 pl-4"><span class="data-label">Spezial</span><span class="data-value">Integrierte Protonenbomben</span></div>
+                <h3 class="text-white font-black text-xs mb-8 uppercase tracking-widest flex items-center gap-2">
+                    <span class="w-2 h-2 bg-white"></span> Waffensystem-Konfiguration
+                </h3>
+                <div class="grid sm:grid-cols-2 md:grid-cols-5 gap-8">
+                    <div class="border-l-2 border-red-600 pl-4"><span class="data-label">Primär</span><span class="data-value">2 Laserkanonen</span></div>
+                    <div class="border-l-2 border-red-600 pl-4"><span class="data-label">Turm (Anti-Air)</span><span class="data-value">Anti-Sternjäger-Doppel-Ionenkanone</span></div>
+                    <div class="border-l-2 border-red-600 pl-4"><span class="data-label">Torpedos</span><span class="data-value">2 Protonen-Torpedowerfer (12 Torpedos)</span></div>
+                    <div class="border-l-2 border-red-600 pl-4"><span class="data-label">Spezial</span><span class="data-value">Integrierter Bombenschacht</span></div>
+                    <div class="border-l-2 border-red-600 pl-4"><span class="data-label">Notfall-Prozedur</span><span class="data-value">Wenn Bombenschacht klemmt, Torpedos nutzen</span></div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Sektion: Interaktives Holo-Vektorsystem & Diagnose -->
+        <section id="diagnose" class="scroll-mt-32 space-y-16">
+            <div class="red-header">Holo-Vektorscan & Systemanalyse</div>
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Interaktiver Canvas (Optimierter, vergrößerter 3D-Drahtgitter-Raum) -->
+                <div class="terminal-panel p-6 lg:col-span-8 flex flex-col items-center justify-center min-h-[550px]">
+                    <div class="w-full flex justify-between items-center mb-4 border-b border-white/5 pb-2">
+                        <span class="text-[10px] text-white font-bold uppercase tracking-widest flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-white animate-ping"></span> Live-Vektor-Rendering (V-Formation)
+                        </span>
+                        <span class="text-[9px] text-white/50 font-bold">MODELL: BTL-B FLOTTE // FORMATION: V_GRID_ULTRA</span>
+                    </div>
+                    
+                    <!-- Der rotierende Canvas -->
+                    <canvas id="vectorCanvas" class="w-full max-w-[600px] aspect-square block cursor-grab active:cursor-grabbing"></canvas>
+                    
+                    <div class="text-[8px] text-white/50 mt-2 text-center uppercase tracking-widest">
+                        Ziehen mit der Maus, um den Neigungswinkel der V-Formation zu verändern
+                    </div>
+                </div>
+
+                <!-- Analyse-Details -->
+                <div class="terminal-panel p-8 lg:col-span-4 h-full flex flex-col justify-between space-y-6">
+                    <div>
+                        <h3 class="text-white font-black text-xs mb-6 uppercase tracking-widest flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white"></span> Interaktive Diagnose
+                        </h3>
+                        <p class="text-xs text-white mb-6 leading-relaxed">
+                            Wähle eine Komponente aus, um die Spezifikationen und die Signalintegrität abzufragen.
+                        </p>
+                        
+                        <!-- Systemauswahl-Buttons -->
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <button onclick="selectSystem('las')" id="btn-las" class="border border-white/10 p-3 text-[10px] uppercase font-bold text-left bg-white/5 text-white transition-all">
+                                <span class="mr-1">■</span> Laserkanonen
+                            </button>
+                            <button onclick="selectSystem('ion')" id="btn-ion" class="border border-white/10 p-3 text-[10px] uppercase font-bold text-left bg-black text-white/55 transition-all">
+                                <span class="mr-1">■</span> Ionen-Geschütz
+                            </button>
+                            <button onclick="selectSystem('eng')" id="btn-eng" class="border border-white/10 p-3 text-[10px] uppercase font-bold text-left bg-black text-white/55 transition-all">
+                                <span class="mr-1">■</span> Ionentriebwerke
+                            </button>
+                            <button onclick="selectSystem('shp')" id="btn-shp" class="border border-white/10 p-3 text-[10px] uppercase font-bold text-left bg-black text-white/55 transition-all">
+                                <span class="mr-1">■</span> Schildprojektor
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Diagnosedaten-Anzeige -->
+                    <div class="bg-black/60 border border-white/5 p-6 space-y-4">
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span id="diag-title" class="text-xs font-bold text-white uppercase tracking-wider">Bug-Laserkanonen</span>
+                            <span id="diag-status" class="text-[9px] px-2 py-0.5 bg-white/10 text-white border border-white/30 uppercase font-black">Online</span>
+                        </div>
+                        <p id="diag-desc" class="text-xs text-white leading-relaxed min-h-[60px]">
+                            Zwei starr nach vorne ausgerichtete Taim & Bak IX8 Laserkanonen. Primärwaffe im direkten Dogfight.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 pt-2">
+                            <div>
+                                <span class="data-label">Auslastung</span>
+                                <span id="diag-stat1" class="text-xs font-bold text-white">45% Nominal</span>
+                            </div>
+                            <div>
+                                <span class="data-label">Signal-Frequenz</span>
+                                <span id="diag-stat2" class="text-xs font-bold text-white">412.8 MHz</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -230,65 +357,131 @@
         <section id="taktik" class="scroll-mt-32 space-y-16">
             <div class="red-header">Taktisches Protokoll</div>
             
-            <div class="grid lg:grid-cols-3 gap-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Primäraufgabe -->
                 <div class="tactic-card">
-                    <div class="text-red-600 font-black text-4xl mb-4">01</div>
-                    <h4 class="text-white font-bold uppercase text-sm mb-4">AAT Bekämpfung</h4>
-                    <p class="text-xs text-neutral-400 leading-relaxed">
-                        Anflug im <span class="text-white underline">Sturzflug</span> direkt über dem Ziel einleiten. Bombenabwurf während der Sinkphase auslösen, um die schwächere Dachpanzerung des Panzers zu penetrieren.
+                    <div class="text-white font-black text-4xl mb-4">I</div>
+                    <h4 class="text-white font-bold uppercase text-sm mb-4">Primäraufgabe der Staffel</h4>
+                    <p class="text-xs text-white leading-relaxed">
+                        Die Hauptaufgabe eines Bombers liegt in der gezielten Bekämpfung von stark geschützten oder strategisch wichtigen Zielen. Die primäre Aufgabe der Schattenstaffel ist die präzise Eliminierung feindlicher Stellungen.
                     </p>
                 </div>
+                <!-- Anflugs-Formation -->
                 <div class="tactic-card">
-                    <div class="text-red-600 font-black text-4xl mb-4">02</div>
-                    <h4 class="text-white font-bold uppercase text-sm mb-4">AA-Geschütz Umgehung</h4>
-                    <p class="text-xs text-neutral-400 leading-relaxed">
-                        Anflug konsequent <span class="text-white underline">unter dem Pfeiler</span> durchführen. Das Geschütz besitzt einen mechanischen toten Winkel nach unten. Erst am Abwurfpunkt steil hochziehen.
+                    <div class="text-white font-black text-4xl mb-4">II</div>
+                    <h4 class="text-white font-bold uppercase text-sm mb-4">Standard-Formation</h4>
+                    <p class="text-xs text-white leading-relaxed">
+                        Beim gemeinsamen taktischen Anflug auf das Zielgebiet ist standardmäßig die V-Formation einzuhalten, um optimale Feuersektoren und gegenseitigen Schutz zu garantieren.
                     </p>
                 </div>
+                <!-- Notbehelf Bombenschacht -->
                 <div class="tactic-card">
-                    <div class="text-red-600 font-black text-4xl mb-4">03</div>
-                    <h4 class="text-white font-bold uppercase text-sm mb-4">Homing Spider Droide</h4>
-                    <p class="text-xs text-neutral-400 leading-relaxed">
-                        Anflug von oben. Präziser Bombenabwurf auf die <span class="text-white underline">Beingelenke</span>. Ziel ist die Zerstörung der Balance-Aktuatoren, um die Einheit zum Umkippen zu bringen.
+                    <div class="text-white font-black text-4xl mb-4">III</div>
+                    <h4 class="text-white font-bold uppercase text-sm mb-4">Notfall: Klemmender Schacht</h4>
+                    <p class="text-xs text-white leading-relaxed">
+                        Sollte der primäre Bombenschacht während des Anflugs blockieren oder klemmen, ist der Angriff dennoch fortzuführen: Verwende in diesem Szenario die sekundären Protonen-Torpedowerfer, um feindliche Kräfte zu eliminieren.
                     </p>
                 </div>
             </div>
 
-            <div class="terminal-panel p-8 border-l-4 border-red-600">
-                <h4 class="text-white font-bold uppercase text-xs mb-6 tracking-widest">Betriebsanweisungen (Schattenstaffel)</h4>
-                <ul class="grid md:grid-cols-2 gap-x-12 gap-y-4 text-[10px] uppercase font-bold text-neutral-400">
-                    <li class="flex items-center gap-3"><span class="text-red-600 text-lg">■</span> Abwurf-Auslöser LANGE gedrückt halten</li>
-                    <li class="flex items-center gap-3"><span class="text-red-600 text-lg">■</span> Max. 1 Reparatur pro Einsatzzyklus</li>
-                    <li class="flex items-center gap-3"><span class="text-red-600 text-lg">■</span> Aufmunitionierung jederzeit im Hangar</li>
-                    <li class="flex items-center gap-3"><span class="text-red-600 text-lg">■</span> 19 Plätze für reguläre Staffel-Piloten</li>
-                </ul>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
+                <div class="tactic-card">
+                    <div class="text-white font-black text-4xl mb-4">01</div>
+                    <h4 class="text-white font-bold uppercase text-sm mb-4">AAT Bekämpfung</h4>
+                    <p class="text-xs text-white leading-relaxed">
+                        Anflug im Sturzflug direkt über dem Ziel einleiten. Bombenabwurf während der Sinkphase auslösen, um die schwächere Dachpanzerung des Panzers zu penetrieren.
+                    </p>
+                </div>
+                <div class="tactic-card">
+                    <div class="text-white font-black text-4xl mb-4">02</div>
+                    <h4 class="text-white font-bold uppercase text-sm mb-4">AA-Geschütz Umgehung</h4>
+                    <p class="text-xs text-white leading-relaxed">
+                        Anflug konsequent unter dem Pfeiler durchführen. Das Geschütz besitzt einen mechanischen toten Winkel nach unten. Erst am Abwurfpunkt steil hochziehen.
+                    </p>
+                </div>
+                <div class="tactic-card">
+                    <div class="text-white font-black text-4xl mb-4">03</div>
+                    <h4 class="text-white font-bold uppercase text-sm mb-4">Homing Spider Droide</h4>
+                    <p class="text-xs text-white leading-relaxed">
+                        Anflug von oben. Präziser Bombenabwurf auf die Beingelenke. Ziel ist die Zerstörung der Balance-Aktuatoren, um die Einheit zum Umkippen zu bringen.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Betriebsanweisungen & Sicherheitsprotokoll -->
+            <div class="terminal-panel p-8 border-l-4 border-red-600 space-y-6">
+                <h4 class="text-white font-bold uppercase text-xs tracking-widest">Sicherheitsrichtlinien & Flugfreigabe</h4>
+                <div class="grid md:grid-cols-2 gap-x-12 gap-y-4 text-[10px] uppercase font-bold text-white">
+                    <div class="flex items-start gap-3">
+                        <span class="text-white text-lg leading-none">■</span> 
+                        <div>
+                            <span class="text-white block mb-1">Unbefugte Startversuche:</span>
+                            Sollte ein unbefugter Kadett versuchen, einen Y-Wing auszuparken und abzuheben, weise ihn umgehend auf das Protokoll hin und lasse ihn das Schiff unverzüglich wieder einparken.
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-white text-lg leading-none">■</span> 
+                        <div>
+                            <span class="text-white block mb-1">Externe Flugfreigabe (Mindestrang):</span>
+                            Um einen Y-Wing außerhalb der Schattenstaffel fliegen zu dürfen, ist zwingend mindestens der Rang Armored Vehicle Platoon Senior Petty Officer+ (AVP SPO+) erforderlich.
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-white text-lg leading-none">■</span> 
+                        <div>
+                            <span class="text-white block mb-1">Befehlskette der 501st:</span>
+                            Befehle eines Majors (MAJ) der 501st Legion (z. B. Bombardierung eines zivilen Dorfes) sind auszuführen, da dieser rangtechnisch autorisiert ist, entsprechende Einsatzbefehle an dich zu erteilen.
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-white text-lg leading-none">■</span> 
+                        <div>
+                            <span class="text-white block mb-1">Standard-Betriebsparameter:</span>
+                            Abwurf-Auslöser LANGE gedrückt halten. Max. 1 Reparatur pro Einsatzzyklus. Aufmunitionierung jederzeit im Hangar. 19 Plätze für reguläre Piloten.
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Zertifizierung (Quiz) -->
         <section id="prüfung" class="scroll-mt-32 py-20 border-t border-white/5">
-            <div class="max-w-4xl mx-auto terminal-panel p-12 shadow-2xl shadow-red-900/10">
+            <div class="max-w-4xl mx-auto terminal-panel p-8 md:p-12 shadow-2xl shadow-red-900/10">
+                
+                <!-- Aktiviertes Quiz -->
                 <div id="quiz-container">
-                    <div class="flex justify-between items-center mb-12">
-                        <span id="q-count" class="text-red-600 font-black text-[10px] tracking-[0.4em] uppercase">Initialisiere Prüfung</span>
-                        <div class="w-32 h-1 bg-white/5 relative">
-                            <div id="progress" class="absolute left-0 top-0 h-full bg-red-600 w-0 transition-all"></div>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12 border-b border-white/5 pb-6">
+                        <span id="q-count" class="text-white font-black text-[10px] tracking-[0.4em] uppercase">Initialisiere Prüfung</span>
+                        <div class="w-full sm:w-48 h-1.5 bg-white/5 relative rounded-full overflow-hidden">
+                            <div id="progress" class="absolute left-0 top-0 h-full bg-red-600 w-0 transition-all duration-300"></div>
                         </div>
                     </div>
-                    <h3 id="q-text" class="text-2xl text-white font-bold mb-12 italic">Lade Verschlüsselung...</h3>
-                    <div id="q-options" class="grid md:grid-cols-2 gap-6"></div>
+                    
+                    <h3 id="q-text" class="text-xl md:text-2xl text-white font-bold mb-8 italic min-h-[60px]">Lade Verschlüsselung...</h3>
+                    
+                    <div id="q-options" class="grid md:grid-cols-2 gap-4 mb-8"></div>
+                    
+                    <!-- Steuerungstaste nach der Antwort -->
+                    <div class="flex justify-end pt-4">
+                        <button id="next-btn" onclick="nextQuestion()" class="hidden bg-white text-black hover:bg-neutral-200 transition px-6 py-3 text-[10px] uppercase font-bold tracking-widest">
+                            Bestätigen & Weiter
+                        </button>
+                    </div>
                 </div>
 
-                <div id="result-box" class="hidden text-center space-y-10">
-                    <h3 class="text-4xl font-black text-white uppercase italic tracking-tighter">Status: Zertifizierung</h3>
-                    <div id="final-score" class="text-9xl font-black text-red-600">0/10</div>
-                    <p id="feedback" class="text-neutral-400 text-sm max-w-md mx-auto italic leading-relaxed"></p>
+                <!-- Ergebnisse-Box -->
+                <div id="result-box" class="hidden text-center space-y-10 py-10">
+                    <h3 class="text-3xl md:text-4xl font-black text-white uppercase italic tracking-tighter">Status: Zertifizierung</h3>
+                    <div id="final-score" class="text-8xl md:text-9xl font-black text-white">0/5</div>
+                    <p id="feedback" class="text-white text-xs md:text-sm max-w-md mx-auto italic leading-relaxed"></p>
                     
-                    <div class="flex flex-col items-center gap-4">
-                        <a href="https://q26015373-coder.github.io/Schattenstaffel-Auswahltest/" target="_blank" class="official-test-btn">
+                    <div class="flex flex-col items-center gap-6 pt-6">
+                        <a href="https://q26015373-coder.github.io/Schattenstaffel-Auswahltest/" target="_blank" class="official-test-btn text-xs md:text-sm">
                             Zum Offiziellen Auswahltest
                         </a>
-                        <button onclick="location.reload()" class="text-neutral-600 text-[10px] uppercase font-bold tracking-widest hover:text-white transition">Archiv-Test wiederholen</button>
+                        <button onclick="restartQuiz()" class="text-white/50 text-[10px] uppercase font-bold tracking-widest hover:text-white transition">
+                            Archiv-Test wiederholen
+                        </button>
                     </div>
                 </div>
             </div>
@@ -297,73 +490,115 @@
     </main>
 
     <footer class="py-24 bg-black border-t border-white/5 text-center">
-        <div class="opacity-10 grayscale italic font-black text-6xl uppercase tracking-[1em] mb-12">Schattenstaffel</div>
-        <p class="text-[9px] text-neutral-600 uppercase tracking-[0.6em] font-bold">Galaktisches Militärarchiv // Autorisiert durch CPO Kaze & SDO Spark</p>
+        <div class="opacity-10 grayscale italic font-black text-3xl sm:text-6xl uppercase tracking-[0.8em] mb-12">Schattenstaffel</div>
+        <p class="text-[9px] text-white/55 uppercase tracking-[0.4em] md:tracking-[0.6em] font-bold px-6 leading-loose">
+            Galaktisches Militärarchiv // Autorisiert durch CPO Kaze & SDO Spark
+        </p>
     </footer>
 
     <script>
+        // Systemdiagnose Datenobjekt (Monochromer Status, aber UI-Button-Logik bleibt passend zur roten Umgebung)
+        const systems = {
+            las: {
+                title: "Bug-Laserkanonen",
+                status: "Online",
+                statusClass: "text-white bg-white/10 border-white/20",
+                desc: "Zwei starr nach vorne ausgerichtete Taim & Bak IX8 Laserkanonen. Exzellente Feuerkraft gegen kleinere Jäger und Bodenziele im direkten Vorbeiflug.",
+                stat1: "45% Nominal",
+                stat2: "412.8 MHz"
+            },
+            ion: {
+                title: "Heck-Ionenkanone",
+                status: "Geladen",
+                statusClass: "text-white bg-white/10 border-white/20",
+                desc: "Anti-Sternjäger-Doppel-Ionenkanonenturm. Vom Copiloten/Kanonier manuell oder über automatische Zielerfassung gegen anfliegende feindliche Jäger einsetzbar.",
+                stat1: "Bereit",
+                stat2: "890.2 MHz"
+            },
+            eng: {
+                title: "Ionentriebwerke",
+                status: "Aktiv",
+                statusClass: "text-white bg-white/10 border-white/20",
+                desc: "Zwei schwere Koensayr R200 Ionentriebwerke. Bieten enormen Schub für schwere Bombenangriffe, schränken jedoch die Manövrierbarkeit ein.",
+                stat1: "215 km/h",
+                stat2: "5500 RPM"
+            },
+            shp: {
+                title: "Deflektor-Schildgenerator",
+                status: "Aufgeladen",
+                statusClass: "text-white bg-white/10 border-white/20",
+                desc: "Chempat-Schildprojektorgruppen zur Regeneration der Deflektorschilde. Schützt vor Laserfeuer und atmosphärischer Reibung.",
+                stat1: "100% Max",
+                stat2: "922.5 MHz"
+            }
+        };
+
+        function selectSystem(sysKey) {
+            const data = systems[sysKey];
+            document.getElementById('diag-title').innerText = data.title;
+            
+            const statusEl = document.getElementById('diag-status');
+            statusEl.innerText = data.status;
+            statusEl.className = `text-[9px] px-2 py-0.5 border uppercase font-black ${data.statusClass}`;
+            
+            document.getElementById('diag-desc').innerText = data.desc;
+            document.getElementById('diag-stat1').innerText = data.stat1;
+            document.getElementById('diag-stat2').innerText = data.stat2;
+
+            // Aktive Button-Styling (Farbliche Akzente eliminiert)
+            ['las', 'ion', 'eng', 'shp'].forEach(k => {
+                const btn = document.getElementById(`btn-${k}`);
+                if(k === sysKey) {
+                    btn.classList.remove('bg-black', 'text-white/55');
+                    btn.classList.add('bg-white/15', 'text-white');
+                } else {
+                    btn.classList.add('bg-black', 'text-white/55');
+                    btn.classList.remove('bg-white/15', 'text-white');
+                }
+            });
+        }
+
+        // Quiz-Fragen (Maximal 5 repräsentative Fragen)
         const questions = [
             {
-                q: "Welches Ziel muss beim Homing Spider Droiden getroffen werden, um ihn umzuwerfen?",
-                o: ["Die Zentrale Linse", "Die Bein-Gelenke", "Der obere Laser", "Das Heck-Modul"],
+                q: "Was ist die primäre Aufgabe der Schattenstaffel?",
+                o: ["Spionage-Flüge durchführen", "Feindliche Stellungen zerstören", "Geleitschutz für Senatoren", "Aufklärung feindlicher Flotten"],
                 a: 1
             },
             {
-                q: "Wie lautet die server-spezifische (Simulations-) V-Max?",
-                o: ["950 km/h", "215 km/h", "127 km/h", "500 km/h"],
-                a: 1
-            },
-            {
-                q: "Welches taktische Manöver ist gegen AAT-Panzer vorgeschrieben?",
-                o: ["Seitlicher Beschuss", "Unterflug", "Sturzflug von oben", "Keine Bomben nutzen"],
+                q: "Wie verhältst du dich, wenn ein unbefugter Kadett einen Y-Wing ausparkt?",
+                o: ["Ignorieren", "Sofort abschießen", "Ihn auf das Protokoll hinweisen und einparken lassen", "Ihn zum Major befördern"],
                 a: 2
             },
             {
-                q: "Was ist beim Auslösen der Bomben technisch zwingend?",
-                o: ["Kurz tippen", "Lange gedrückt halten", "Doppelklick", "Nur bei 0 km/h"],
+                q: "Welcher Mindestrang ist für Nicht-Staffelmitglieder nötig, um den Y-Wing fliegen zu dürfen?",
+                o: ["Kadett", "Sergeant Major+", "Lieutenant+", "Armored Vehicle Platoon Senior Petty Officer+ (AVP SPO+)"],
+                a: 3
+            },
+            {
+                q: "Was ist die Standard-Formation beim gemeinsamen taktischen Anflug?",
+                o: ["Keil-Formation", "V-Formation", "Reihe hintereinander", "Kreis-Verteidigung"],
                 a: 1
             },
             {
-                q: "Wie lautet der volle Name des Heckgeschützes?",
-                o: ["Laser-Batterie", "Anti-Sternjäger-Doppel-Ionenkanonenturm", "Ionen-Flak 2x", "Heck-Abwehr"],
-                a: 1
-            },
-            {
-                q: "Warum ist ein Anflug unter dem Pfeiler eines AA-Geschützes sicher?",
-                o: ["Wegen der Tarnung", "Toter Winkel des Geschützes nach unten", "Die Schilde sind dort stärker", "Kein Radar-Kontakt"],
-                a: 1
-            },
-            {
-                q: "Aus welchem Material bestehen die Panzerplatten?",
-                o: ["Reiner Durastahl", "Titanverstärkter Alustahl", "Carbonit-Legierung", "Polymer-Verbund"],
-                a: 1
-            },
-            {
-                q: "Wie viele reguläre Staffel-Plätze existieren?",
-                o: ["21", "12", "19", "25"],
-                a: 2
-            },
-            {
-                q: "Wie hoch ist die lore-getreue Maximalgeschwindigkeit?",
-                o: ["950 km/h", "1100 km/h", "215 km/h", "750 km/h"],
-                a: 0
-            },
-            {
-                q: "Welche Fluchtmöglichkeit bietet der Y-Wing im Notfall?",
-                o: ["Schleudersitz", "Cockpit-Abkopplung", "Teleport-Modul", "Rettungskapsel im Heck"],
+                q: "Der Major (MAJ) der 501st befiehlt die Bombardierung eines Dorfes. Führst du diesen Befehl aus?",
+                o: ["Nein, da zivile Ziele tabu sind", "Ja, da der MAJ mir solche Befehle erteilen darf", "Nein, nur Befehle von CPO Kaze gelten", "Ich frage erst den Senat um Erlaubnis"],
                 a: 1
             }
         ];
 
-        let cur = 0, score = 0;
+        let cur = 0, score = 0, answered = false;
 
         function loadQuestion() {
             if (cur >= questions.length) {
                 showResults();
                 return;
             }
+            answered = false;
+            document.getElementById('next-btn').classList.add('hidden');
+            
             const q = questions[cur];
-            document.getElementById('q-count').innerText = `DATENSATZ-ABFRAGE ${cur + 1}/10`;
+            document.getElementById('q-count').innerText = `DATENSATZ-ABFRAGE ${cur + 1}/${questions.length}`;
             document.getElementById('q-text').innerText = q.q;
             document.getElementById('progress').style.width = `${(cur / questions.length) * 100}%`;
             
@@ -371,29 +606,316 @@
             optCont.innerHTML = '';
             
             q.o.forEach((opt, idx) => {
-                const b = document.createElement('div');
-                b.className = 'quiz-option text-[10px] font-bold uppercase tracking-widest';
-                b.innerHTML = `<span class="text-red-600 mr-3">0${idx+1}</span> ${opt}`;
-                b.onclick = () => { if(idx === q.a) score++; cur++; loadQuestion(); };
+                const b = document.createElement('button');
+                b.className = 'quiz-option text-[10px] font-bold uppercase tracking-widest text-left w-full';
+                b.innerHTML = `<span class="text-white mr-3">0${idx+1}</span> ${opt}`;
+                b.onclick = () => handleAnswer(idx, b);
                 optCont.appendChild(b);
             });
+        }
+
+        function handleAnswer(selectedIndex, clickedElement) {
+            if (answered) return;
+            answered = true;
+            
+            const q = questions[cur];
+            const optCont = document.getElementById('q-options');
+            const buttons = optCont.getElementsByTagName('button');
+            
+            // Markiere richtige und falsche Antwort direkt (Visuell in Weißtönen gelöst)
+            if (selectedIndex === q.a) {
+                clickedElement.classList.add('correct');
+                score++;
+            } else {
+                clickedElement.classList.add('incorrect');
+                buttons[q.a].classList.add('correct'); // Zeige richtige Antwort
+            }
+            
+            // Zeige den "Weiter"-Button an
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            cur++;
+            loadQuestion();
         }
 
         function showResults() {
             document.getElementById('quiz-container').classList.add('hidden');
             const res = document.getElementById('result-box');
             res.classList.remove('hidden');
-            document.getElementById('final-score').innerText = `${score}/10`;
+            document.getElementById('final-score').innerText = `${score}/${questions.length}`;
             
             let feedback = "";
-            if (score === 10) feedback = "Herausragend. Sie sind eine Bereicherung für die Schattenstaffel. Setzen Sie Ihre Rekrutierung über den offiziellen Auswahltest fort.";
-            else if (score >= 7) feedback = "Zertifizierung bestanden. Sie zeigen solides technisches Verständnis. Begeben Sie sich zum Auswahltest.";
-            else feedback = "Zertifizierung mangelhaft. Das Archivstudium wird empfohlen, bevor Sie den offiziellen Auswahltest antreten.";
+            if (score === questions.length) feedback = "Herausragend! Sie haben makelloses technisches und taktisches Wissen bewiesen. Sie sind eine absolute Bereicherung für die Schattenstaffel.";
+            else if (score >= 4) feedback = "Zertifizierung bestanden. Sie zeigen hervorragendes Verständnis aller Protokolle. Begeben Sie sich zum Auswahltest.";
+            else feedback = "Zertifizierung mangelhaft. Ein intensives Studium des Archivs wird dringend empfohlen, bevor Sie den Test wiederholen.";
             
             document.getElementById('feedback').innerText = feedback;
         }
 
-        window.onload = loadQuestion;
+        // --- Live-Vektorbasiertes Canvas Rendering (Ultra-detaillierte V-Formation aus 3 Y-Wings) ---
+        const canvas = document.getElementById('vectorCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            const size = canvas.parentElement.clientWidth - 48;
+            canvas.width = size;
+            canvas.height = size;
+        }
+        
+        let pitch = 0.45; // Neigungswinkel
+        let yaw = 0; // Rotation um eigene Axen
+        let isDragging = false;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+
+        // Mouse- & Touch-Steuerung
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+        });
+
+        window.addEventListener('mouseup', () => { isDragging = false; });
+        
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const deltaX = e.clientX - lastMouseX;
+            const deltaY = e.clientY - lastMouseY;
+            yaw += deltaX * 0.007;
+            pitch += deltaY * 0.007;
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+        });
+
+        canvas.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            lastMouseX = e.touches[0].clientX;
+            lastMouseY = e.touches[0].clientY;
+        });
+
+        window.addEventListener('touchend', () => { isDragging = false; });
+
+        canvas.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const deltaX = e.touches[0].clientX - lastMouseX;
+            const deltaY = e.touches[0].clientY - lastMouseY;
+            yaw += deltaX * 0.007;
+            pitch += deltaY * 0.007;
+            lastMouseX = e.touches[0].clientX;
+            lastMouseY = e.touches[0].clientY;
+        });
+
+        // Hochauflösende Koordinatendaten des BTL-B Bombers (Verstärkte Streben und Sub-Elemente)
+        // Komplett restauriertes Cockpit- & laserfront-Design für maximale Ästhetik
+        const vertices = [
+            // Cockpit/Nase (0-7)
+            {x: 0, y: 0.05, z: 2.1},      // 0: Nasenspitze (Zentral-Front)
+            {x: -0.22, y: 0.05, z: 1.2},  // 1: Cockpit-Basis hinten links
+            {x: 0.22, y: 0.05, z: 1.2},   // 2: Cockpit-Basis hinten rechts
+            {x: 0, y: -0.2, z: 1.2},      // 3: Kanzeldach hinten
+            {x: 0, y: 0.2, z: 1.2},       // 4: Cockpit-Boden hinten
+            {x: 0, y: -0.1, z: 1.7},      // 5: Kanzeldach vorn (stromlinienförmiger Schnittpunkt)
+            {x: -0.06, y: 0.08, z: 2.1},  // 6: Bugkanone links Basis am Rumpf
+            {x: 0.06, y: 0.08, z: 2.1},   // 7: Bugkanone rechts Basis am Rumpf
+
+            // Rumpf/Mittelteil (8-11)
+            {x: -0.35, y: 0.15, z: -0.5},  // 8: Rumpf Links-Vorne
+            {x: 0.35, y: 0.15, z: -0.5},   // 9: Rumpf Rechts-Vorne
+            {x: -0.35, y: -0.15, z: -1.2}, // 10: Rumpf Links-Hinten
+            {x: 0.35, y: -0.15, z: -1.2},  // 11: Rumpf Rechts-Hinten
+
+            // Astromech-Kuppel & Befestigungsring (12-15)
+            {x: 0, y: -0.3, z: 0.3},      // 12: Astromech Kuppel-Zentrum
+            {x: -0.12, y: -0.22, z: 0.45}, // 13: Astromech Ring vorn-links
+            {x: 0.12, y: -0.22, z: 0.45},  // 14: Astromech Ring vorn-rechts
+            {x: 0, y: -0.18, z: 0.2},      // 15: Astromech Basis hinten
+
+            // Triebwerk Links - Gondel (16-25)
+            {x: -1.8, y: -0.05, z: 0.7},   // 16: Gondel-Spitze vorn (Zentrum)
+            {x: -1.55, y: -0.3, z: 0.7},   // 17: Front-Ring oben-links
+            {x: -2.05, y: -0.3, z: 0.7},   // 18: Front-Ring oben-rechts
+            {x: -1.8, y: 0.2, z: 0.7},     // 19: Front-Ring unten
+            {x: -1.55, y: -0.3, z: -2.3},  // 20: Heck-Ring links-oben
+            {x: -2.05, y: -0.3, z: -2.3},  // 21: Heck-Ring rechts-oben
+            {x: -1.8, y: 0.2, z: -2.3},    // 22: Heck-Ring unten
+            {x: -1.8, y: -0.05, z: -2.6},  // 23: Schubdüse Auslass
+            {x: -1.8, y: -0.05, z: -0.8},  // 24: Flügelstrebe Triebwerkzentrum
+            {x: -1.8, y: -0.1, z: 0.0},    // 25: Gondel-Mittelring oben
+
+            // Triebwerk Rechts - Gondel (26-35)
+            {x: 1.8, y: -0.05, z: 0.7},    // 26: Gondel-Spitze vorn (Zentrum)
+            {x: 2.05, y: -0.3, z: 0.7},    // 27: Front-Ring oben-links
+            {x: 1.55, y: -0.3, z: 0.7},    // 28: Front-Ring oben-rechts
+            {x: 1.8, y: 0.2, z: 0.7},      // 29: Front-Ring unten
+            {x: 2.05, y: -0.3, z: -2.3},   // 30: Heck-Ring links-oben
+            {x: 1.55, y: -0.3, z: -2.3},   // 31: Heck-Ring rechts-oben
+            {x: 1.8, y: 0.2, z: -2.3},     // 32: Heck-Ring unten
+            {x: 1.8, y: -0.05, z: -2.6},   // 33: Schubdüse Auslass
+            {x: 1.8, y: -0.05, z: -0.8},   // 34: Flügelstrebe Triebwerkzentrum
+            {x: 1.8, y: -0.1, z: 0.0},     // 35: Gondel-Mittelring oben
+
+            // Geschützturm & Doppelrohre hinten (36-40)
+            {x: 0, y: -0.42, z: 0.95},     // 36: Turmsockel
+            {x: -0.06, y: -0.68, z: 0.5},  // 37: Ionenrohr links oben
+            {x: 0.06, y: -0.68, z: 0.5},   // 38: Ionenrohr rechts oben
+            {x: -0.06, y: -0.68, z: 0.8},  // 39: Ionenrohr links hinten
+            {x: 0.06, y: -0.68, z: 0.8},   // 40: Ionenrohr rechts hinten
+            
+            // Heckdetails (41-42)
+            {x: 0, y: 0.15, z: -1.7},      // 41: Sensorstrebe Ende
+            {x: 0, y: -0.15, z: -1.7},     // 42: Deflektorelement unten
+
+            // Neue, ultra-ästhetische Buglaserspitzen für parallel verlaufende Laserläufe (43-44)
+            {x: -0.06, y: 0.08, z: 2.55},  // 43: Linke Lasermündung (perfekt parallel)
+            {x: 0.06, y: 0.08, z: 2.55}    // 44: Rechte Lasermündung (perfekt parallel)
+        ];
+
+        // Hochpräzises Vektor-Liniennetz für ein extrem sauberes Drahtgittermodell
+        const edges = [
+            // Cockpithülle & Nasensegmentierung (Schnittiges, keilförmiges Kanzel-Design)
+            [0, 1], [0, 2], [0, 3], [0, 4], [0, 5],
+            [1, 3], [2, 3], [1, 4], [2, 4], [1, 2],
+            [3, 5], [1, 5], [2, 5],
+            // Parallele Bug-Laserrohre (Verhindert unschöne schräge Linien)
+            [6, 43], [7, 44],
+            // Rumpfanbindung & Trägerstruktur
+            [1, 8], [2, 9], [4, 8], [4, 9], [3, 8], [3, 9],
+            [8, 9], [8, 10], [9, 11], [10, 11],
+            // Heckbaugruppe
+            [10, 41], [11, 41], [10, 42], [11, 42], [41, 42],
+            // Astromech-Kuppelbau
+            [12, 13], [12, 14], [12, 15], [13, 14], [14, 15], [15, 13], [8, 13], [9, 14],
+            // Flügelverbindungen zu den Triebwerken
+            [8, 16], [9, 26], [10, 24], [11, 34],
+            // Triebwerk Links (Symmetrische Gondelgeometrie)
+            [16, 17], [16, 18], [16, 19], [17, 18], [18, 19], [19, 17], // Frontring
+            [20, 21], [21, 22], [22, 20],                               // Heckring
+            [17, 20], [18, 21], [19, 22], [24, 16], [24, 23],            // Gondelstreben
+            [20, 23], [21, 23], [22, 23],                               // Schubdüsenanschluss
+            [25, 17], [25, 18], [25, 19], [25, 20], [25, 21], [25, 22], // Mittelstabilisator
+            // Triebwerk Rechts (Symmetrische Gondelgeometrie)
+            [26, 27], [26, 28], [26, 29], [27, 28], [28, 29], [29, 27], // Frontring
+            [30, 31], [31, 32], [32, 30],                               // Heckring
+            [27, 30], [28, 31], [29, 32], [34, 26], [34, 33],            // Gondelstreben
+            [30, 33], [31, 33], [32, 33],                               // Schubdüsenanschluss
+            [35, 27], [35, 28], [35, 29], [35, 30], [35, 31], [35, 32], // Mittelstabilisator
+            // Abwehrgeschützturm
+            [3, 36], [36, 37], [36, 38], [37, 38], [37, 39], [38, 40], [39, 40]
+        ];
+
+        // Zeichnet ein einzelnes hochdetailliertes Y-Wing-Schiff an einer Formations-Position (Rot-Akzentuiertes Vektorhologramm)
+        function drawShipInstance(cosP, sinP, cosY, sinY, centerX, centerY, offsetX, offsetY, offsetZ, scale, strokeStyle) {
+            const projected = [];
+
+            vertices.forEach(v => {
+                // Skalierung des Einzelschiffs
+                let lx = v.x * scale;
+                let ly = v.y * scale;
+                let lz = v.z * scale;
+
+                // Weiträumige, dynamische V-Formation
+                let fx = lx + offsetX;
+                let fy = ly + offsetY;
+                let fz = lz + offsetZ;
+
+                // Rotation um Y (Yaw)
+                let x1 = fx * cosY - fz * sinY;
+                let z1 = fx * sinY + fz * cosY;
+                
+                // Rotation um X (Pitch)
+                let y2 = fy * cosP - z1 * sinP;
+                let z2 = fy * sinP + z1 * cosP;
+
+                // Projektion auf 2D mit Perspektive
+                const zoom = canvas.width * 0.18;
+                const distance = 5.8; // Erhöhte Distanz für fantastische räumliche Tiefe
+                const perspective = zoom / (distance + lz);
+                const x2d = centerX + x1 * perspective;
+                const y2d = centerY - y2 * perspective;
+
+                projected.push({x: x2d, y: y2d});
+            });
+
+            // Gitterlinien zeichnen
+            ctx.strokeStyle = strokeStyle;
+            ctx.lineWidth = 1.0;
+            
+            edges.forEach(edge => {
+                const p1 = projected[edge[0]];
+                const p2 = projected[edge[1]];
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+            });
+
+            // Scheitelpunkte (Knoteneffekte)
+            ctx.fillStyle = strokeStyle;
+            projected.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        // Live Render-Schleife der weiten, hochauflösenden V-Formation (Einheitlich in rotem Vektor-Hologramm-Stil)
+        function drawVectorModel() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Taktischer Radarhintergrund (Kreise)
+            ctx.strokeStyle = 'rgba(255, 0, 0, 0.05)';
+            ctx.lineWidth = 1;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            for(let r = 50; r < canvas.width / 1.1; r += 50) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            // Radar Fadenkreuz-Linien
+            ctx.beginPath();
+            ctx.moveTo(0, centerY); ctx.lineTo(canvas.width, centerY);
+            ctx.moveTo(centerX, 0); ctx.lineTo(centerX, canvas.height);
+            ctx.stroke();
+
+            const cosP = Math.cos(pitch);
+            const sinP = Math.sin(pitch);
+            const cosY = Math.cos(yaw);
+            const sinY = Math.sin(yaw);
+
+            // V-FORMATION (Alle 3 hochauflösenden Schiffe sind absolut identisch skaliert)
+            const holoColor = 'rgba(235, 35, 35, 0.85)';
+            const uniformScale = 0.72; // Absolut identischer Größenfaktor für alle Jäger
+
+            // 1. Rechter Flügelmann (Hinten-Rechts - weit außen)
+            drawShipInstance(cosP, sinP, cosY, sinY, centerX, centerY, 2.3, -0.4, -2.4, uniformScale, holoColor);
+
+            // 2. Linker Flügelmann (Hinten-Links - weit außen)
+            drawShipInstance(cosP, sinP, cosY, sinY, centerX, centerY, -2.3, -0.4, -2.4, uniformScale, holoColor);
+
+            // 3. Leitbomber (Zentrum-Vorne - markant im Vordergrund, symmetrische Skalierung)
+            drawShipInstance(cosP, sinP, cosY, sinY, centerX, centerY, 0, 0.4, 1.1, uniformScale, holoColor);
+
+            // Kontinuierliche Rotation
+            if (!isDragging) {
+                yaw += 0.0035;
+            }
+
+            requestAnimationFrame(drawVectorModel);
+        }
+
+        window.onload = function() {
+            resizeCanvas();
+            loadQuestion();
+            drawVectorModel();
+            selectSystem('las');
+        };
+
+        window.addEventListener('resize', resizeCanvas);
     </script>
 </body>
 </html>
