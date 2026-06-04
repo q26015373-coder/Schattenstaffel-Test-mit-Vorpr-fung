@@ -195,6 +195,7 @@
                 </div>
             </div>
             <div class="flex gap-4 md:gap-8 text-[10px] font-bold uppercase tracking-widest text-neutral-400">
+                <a href="#personal" class="hover:text-white transition self-center">Personal</a>
                 <a href="#archiv" class="hover:text-white transition self-center">Archiv</a>
                 <a href="#diagnose" class="hover:text-white transition self-center hidden sm:inline">Diagnose</a>
                 <a href="#taktik" class="hover:text-white transition self-center">Einsatz</a>
@@ -217,6 +218,71 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-6 py-12 space-y-32">
+
+        <!-- Sektion: Personal / Mitglieder -->
+        <section id="personal" class="scroll-mt-32 space-y-8">
+            <div class="red-header">Personalakte // Kader</div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Führungsebene -->
+                <div class="terminal-panel p-8 md:col-span-1 border-t-2 border-red-600">
+                    <h3 class="text-white font-black text-xs mb-6 uppercase tracking-widest flex items-center gap-2">
+                        <span class="w-2 h-2 bg-red-600"></span> Führungsebene
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 border-b border-white/10 pb-3">
+                            <span class="text-[10px] font-black text-red-500 w-8 tracking-widest">CPO</span>
+                            <span class="text-sm font-bold text-white uppercase tracking-wider">Kaze</span>
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-white/10 pb-3">
+                            <span class="text-[10px] font-black text-red-500 w-8 tracking-widest">SDO</span>
+                            <span class="text-sm font-bold text-white uppercase tracking-wider">Spark</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staffelmitglieder -->
+                <div class="terminal-panel p-8 md:col-span-2">
+                    <h3 class="text-white font-black text-xs mb-6 uppercase tracking-widest flex items-center gap-2">
+                        <span class="w-2 h-2 bg-white"></span> Aktiver Kader
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-x-12 gap-y-4">
+                        <div class="flex items-center gap-4 border-b border-white/5 pb-2">
+                            <span class="text-[10px] font-bold text-neutral-400 w-8 tracking-widest">CDO</span>
+                            <span class="text-sm text-white uppercase tracking-wider">Maple</span>
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-white/5 pb-2">
+                            <span class="text-[10px] font-bold text-neutral-400 w-8 tracking-widest">SDO</span>
+                            <span class="text-sm text-white uppercase tracking-wider">Rank</span>
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-white/5 pb-2">
+                            <span class="text-[10px] font-bold text-neutral-400 w-8 tracking-widest">DO</span>
+                            <span class="text-sm text-white uppercase tracking-wider">Ghost</span>
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-white/5 pb-2">
+                            <span class="text-[10px] font-bold text-neutral-400 w-8 tracking-widest">SCM</span>
+                            <span class="text-sm text-white uppercase tracking-wider">Lomi</span>
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-white/5 pb-2">
+                            <span class="text-[10px] font-bold text-neutral-400 w-8 tracking-widest">SCM</span>
+                            <span class="text-sm text-white uppercase tracking-wider">Soap</span>
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-white/5 pb-2">
+                            <span class="text-[10px] font-bold text-neutral-400 w-8 tracking-widest">SCM</span>
+                            <span class="text-sm text-white uppercase tracking-wider">Nino</span>
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-white/5 pb-2">
+                            <span class="text-[10px] font-bold text-neutral-400 w-8 tracking-widest">SCM</span>
+                            <span class="text-sm text-white uppercase tracking-wider">Extreme</span>
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-white/5 pb-2">
+                            <span class="text-[10px] font-bold text-neutral-400 w-8 tracking-widest">SCM</span>
+                            <span class="text-sm text-white uppercase tracking-wider">Nightdark</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Sektion: Technisches Archiv -->
         <section id="archiv" class="scroll-mt-32 space-y-16">
@@ -297,7 +363,7 @@
                     <canvas id="vectorCanvas" class="w-full max-w-[600px] aspect-square block cursor-grab active:cursor-grabbing"></canvas>
                     
                     <div class="text-[8px] text-white/50 mt-2 text-center uppercase tracking-widest">
-                        Ziehen mit der Maus, um den Neigungswinkel der V-Formation zu verändern
+                        Ziehen mit der Maus / Touch, um den Neigungswinkel der V-Formation zu verändern
                     </div>
                 </div>
 
@@ -313,7 +379,7 @@
                         
                         <!-- Systemauswahl-Buttons -->
                         <div class="grid grid-cols-2 gap-4 mb-8">
-                            <button onclick="selectSystem('las')" id="btn-las" class="border border-white/10 p-3 text-[10px] uppercase font-bold text-left bg-white/5 text-white transition-all">
+                            <button onclick="selectSystem('las')" id="btn-las" class="border border-white/10 p-3 text-[10px] uppercase font-bold text-left bg-white/15 text-white transition-all">
                                 <span class="mr-1">■</span> Laserkanonen
                             </button>
                             <button onclick="selectSystem('ion')" id="btn-ion" class="border border-white/10 p-3 text-[10px] uppercase font-bold text-left bg-black text-white/55 transition-all">
@@ -558,7 +624,7 @@
             });
         }
 
-        // Quiz-Fragen (Maximal 5 repräsentative Fragen)
+        // Quiz-Fragen (Vollständige Implementierung mit 5 repräsentativen Fragen)
         const questions = [
             {
                 q: "Was ist die primäre Aufgabe der Schattenstaffel?",
@@ -582,340 +648,403 @@
             },
             {
                 q: "Der Major (MAJ) der 501st befiehlt die Bombardierung eines Dorfes. Führst du diesen Befehl aus?",
-                o: ["Nein, da zivile Ziele tabu sind", "Ja, da der MAJ mir solche Befehle erteilen darf", "Nein, nur Befehle von CPO Kaze gelten", "Ich frage erst den Senat um Erlaubnis"],
+                o: ["Nein, da zivile Ziele tabu sind", "Ja, da der MAJ mir solche Befehle erteilen darf", "Nein, nur Befehle von CPO Kaze gelten", "Ich frage erst den Senat nach Erlaubnis"],
                 a: 1
             }
         ];
 
-        let cur = 0, score = 0, answered = false;
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
 
-        function loadQuestion() {
-            if (cur >= questions.length) {
-                showResults();
-                return;
-            }
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('result-box').classList.add('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
             answered = false;
             document.getElementById('next-btn').classList.add('hidden');
             
-            const q = questions[cur];
-            document.getElementById('q-count').innerText = `DATENSATZ-ABFRAGE ${cur + 1}/${questions.length}`;
-            document.getElementById('q-text').innerText = q.q;
-            document.getElementById('progress').style.width = `${(cur / questions.length) * 100}%`;
+            const qData = questions[currentQuestion];
+            document.getElementById('q-text').innerText = qData.q;
+            document.getElementById('q-count').innerText = `Frage ${currentQuestion + 1} von ${questions.length}`;
             
-            const optCont = document.getElementById('q-options');
-            optCont.innerHTML = '';
-            
-            q.o.forEach((opt, idx) => {
-                const b = document.createElement('button');
-                b.className = 'quiz-option text-[10px] font-bold uppercase tracking-widest text-left w-full';
-                b.innerHTML = `<span class="text-white mr-3">0${idx+1}</span> ${opt}`;
-                b.onclick = () => handleAnswer(idx, b);
-                optCont.appendChild(b);
+            const progressPercent = ((currentQuestion) / questions.length) * 100;
+            document.getElementById('progress').style.width = `${progressPercent}%`;
+
+            const optionsContainer = document.getElementById('q-options');
+            optionsContainer.innerHTML = '';
+
+            qData.o.forEach((opt, idx) => {
+                const button = document.createElement('div');
+                button.className = 'quiz-option rounded-none';
+                button.innerHTML = `
+                    <div class="text-[10px] text-white/50 mb-1">OPTION 0${idx+1}</div>
+                    <div class="text-xs font-bold">${opt}</div>
+                `;
+                button.onclick = () => selectOption(idx, button);
+                optionsContainer.appendChild(button);
             });
         }
 
-        function handleAnswer(selectedIndex, clickedElement) {
+        function selectOption(selectedIdx, element) {
             if (answered) return;
             answered = true;
-            
-            const q = questions[cur];
-            const optCont = document.getElementById('q-options');
-            const buttons = optCont.getElementsByTagName('button');
-            
-            // Markiere richtige und falsche Antwort direkt (Visuell in Weißtönen gelöst)
-            if (selectedIndex === q.a) {
-                clickedElement.classList.add('correct');
+
+            const qData = questions[currentQuestion];
+            const correctIdx = qData.a;
+            const options = document.getElementById('q-options').children;
+
+            if (selectedIdx === correctIdx) {
+                element.classList.add('correct');
                 score++;
             } else {
-                clickedElement.classList.add('incorrect');
-                buttons[q.a].classList.add('correct'); // Zeige richtige Antwort
+                element.classList.add('incorrect');
+                options[correctIdx].classList.add('correct');
             }
-            
-            // Zeige den "Weiter"-Button an
+
+            // Deaktiviere Hover-Effekte auf allen Optionen
+            Array.from(options).forEach(opt => {
+                opt.style.pointerEvents = 'none';
+            });
+
             document.getElementById('next-btn').classList.remove('hidden');
         }
 
         function nextQuestion() {
-            cur++;
-            loadQuestion();
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
         }
 
         function showResults() {
+            document.getElementById('progress').style.width = '100%';
             document.getElementById('quiz-container').classList.add('hidden');
-            const res = document.getElementById('result-box');
-            res.classList.remove('hidden');
-            document.getElementById('final-score').innerText = `${score}/${questions.length}`;
             
-            let feedback = "";
-            if (score === questions.length) feedback = "Herausragend! Sie haben makelloses technisches und taktisches Wissen bewiesen. Sie sind eine absolute Bereicherung für die Schattenstaffel.";
-            else if (score >= 4) feedback = "Zertifizierung bestanden. Sie zeigen hervorragendes Verständnis aller Protokolle. Begeben Sie sich zum Auswahltest.";
-            else feedback = "Zertifizierung mangelhaft. Ein intensives Studium des Archivs wird dringend empfohlen, bevor Sie den Test wiederholen.";
+            const resultBox = document.getElementById('result-box');
+            resultBox.classList.remove('hidden');
             
-            document.getElementById('feedback').innerText = feedback;
+            const finalScoreEl = document.getElementById('final-score');
+            finalScoreEl.innerText = `${score}/${questions.length}`;
+
+            const feedbackEl = document.getElementById('feedback');
+            if (score === questions.length) {
+                feedbackEl.innerText = "Hervorragend! Du hast alle Protokollfragen perfekt beantwortet. Die Schattenstaffel zählt auf deine Präzision.";
+            } else if (score >= 3) {
+                feedbackEl.innerText = "Bestanden. Deine taktische Auffassungsgabe ist ausreichend, jedoch gibt es Raum für Detailstudien im Archiv.";
+            } else {
+                feedbackEl.innerText = "Zertifizierung verweigert. Wiederhole die Archiv-Auswertung und verinnerliche die Einsatzprotokolle der Führungsebene.";
+            }
         }
 
-        // --- Live-Vektorbasiertes Canvas Rendering (Ultra-detaillierte V-Formation aus 3 Y-Wings) ---
+        function restartQuiz() {
+            initQuiz();
+        }
+
+
+        // ==========================================
+        // 3D-Vektor-Formation Canvas-Simulation (Pure HTML5 Canvas 3D Engine)
+        // ==========================================
         const canvas = document.getElementById('vectorCanvas');
         const ctx = canvas.getContext('2d');
-        
+
+        let width = canvas.width = 600;
+        let height = canvas.height = 600;
+
         function resizeCanvas() {
-            const size = canvas.parentElement.clientWidth - 48;
-            canvas.width = size;
-            canvas.height = size;
+            const rect = canvas.getBoundingClientRect();
+            width = canvas.width = rect.width * window.devicePixelRatio;
+            height = canvas.height = rect.width * window.devicePixelRatio;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // 3D Rotationsvariablen
+        let angleX = -0.5; // Pitch
+        let angleY = 0.6;  // Yaw
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+
+        // 3D Model Punkte und Kanten für ein hochdetailliertes BTL-B Y-Wing Drahtgittermodell
+        let ywingVertices = [];
+        let ywingEdges = [];
+        let vIndex = 0;
+
+        function addV(x, y, z) {
+            ywingVertices.push({x, y, z});
+            return vIndex++;
+        }
+
+        function addE(i1, i2) {
+            ywingEdges.push([i1, i2]);
+        }
+
+        function addCircle(cx, cy, cz, radius, segments) {
+            const start = vIndex;
+            for(let i=0; i<segments; i++) {
+                const a = (i/segments) * Math.PI * 2;
+                addV(cx + Math.cos(a)*radius, cy + Math.sin(a)*radius, cz);
+                if(i > 0) addE(start + i - 1, start + i);
+            }
+            addE(start + segments - 1, start);
+            return start;
+        }
+
+        function addCylinder(cx, cy, czStart, czEnd, radius, segments, connectAll=false) {
+            const c1 = addCircle(cx, cy, czStart, radius, segments);
+            const c2 = addCircle(cx, cy, czEnd, radius, segments);
+            const step = connectAll ? 1 : 2;
+            for(let i=0; i<segments; i+=step) {
+                addE(c1 + i, c2 + i);
+            }
+            return {c1, c2};
+        }
+
+        function addCone(cx, cy, czStart, czEnd, radiusStart, radiusEnd, segments) {
+            const c1 = addCircle(cx, cy, czStart, radiusStart, segments);
+            const c2 = addCircle(cx, cy, czEnd, radiusEnd, segments);
+            for(let i=0; i<segments; i+=2) {
+                addE(c1 + i, c2 + i);
+            }
+        }
+
+        function addBox(x, y, z, w, h, d) {
+            const s = vIndex;
+            addV(x-w/2, y-h/2, z+d/2); addV(x+w/2, y-h/2, z+d/2);
+            addV(x+w/2, y+h/2, z+d/2); addV(x-w/2, y+h/2, z+d/2);
+            addV(x-w/2, y-h/2, z-d/2); addV(x+w/2, y-h/2, z-d/2);
+            addV(x+w/2, y+h/2, z-d/2); addV(x-w/2, y+h/2, z-d/2);
+
+            addE(s+0,s+1); addE(s+1,s+2); addE(s+2,s+3); addE(s+3,s+0);
+            addE(s+4,s+5); addE(s+5,s+6); addE(s+6,s+7); addE(s+7,s+4);
+            addE(s+0,s+4); addE(s+1,s+5); addE(s+2,s+6); addE(s+3,s+7);
+            return s;
+        }
+
+        function buildYWing() {
+            // Index 0: Nasenspitze (Referenz für die HUD-Beschriftung)
+            const nose = addV(0, 0, 50);
+
+            // Cockpit Wedge (Gepanzerte Nase des BTL-B)
+            const noseTopL = addV(-3, 2, 42); const noseTopR = addV(3, 2, 42);
+            const noseBotL = addV(-4, -2, 42); const noseBotR = addV(4, -2, 42);
+            const baseTopL = addV(-6, 5, 20); const baseTopR = addV(6, 5, 20);
+            const baseBotL = addV(-7, -4, 20); const baseBotR = addV(7, -4, 20);
+
+            // Nase mit Spitze verbinden
+            addE(nose, noseTopL); addE(nose, noseTopR); addE(nose, noseBotL); addE(nose, noseBotR);
+            
+            // Cockpit-Rahmen
+            addE(noseTopL, noseTopR); addE(noseTopR, noseBotR); addE(noseBotR, noseBotL); addE(noseBotL, noseTopL);
+            addE(baseTopL, baseTopR); addE(baseTopR, baseBotR); addE(baseBotR, baseBotL); addE(baseBotL, baseTopL);
+            addE(noseTopL, baseTopL); addE(noseTopR, baseTopR); addE(noseBotL, baseBotL); addE(noseBotR, baseBotR);
+
+            // Bubble Turret (Ionenkanonen-Kuppel des BTL-B)
+            const turTop = addV(0, 9, 24);
+            const tcStart = addCircle(0, 5, 24, 3.5, 8);
+            for(let i=0; i<8; i+=2) addE(tcStart+i, turTop);
+
+            // Rumpf & Flügel (Neck & Crossbar)
+            addBox(0, 0, 10, 8, 6, 20); // Halsstück
+            addBox(0, 0, -5, 20, 8, 15); // Hauptblock
+            addBox(-18, 0, -5, 16, 4, 10); // Flügel Links
+            addBox(18, 0, -5, 16, 4, 10); // Flügel Rechts
+
+            // Triebwerke
+            const eRadius = 7;
+            const exRadius = 5;
+            
+            [-32, 32].forEach(xOffset => {
+                // Front-Kuppel (Sensor-Phalanx / Ansaugstutzen)
+                addCone(xOffset, 0, 15, 25, eRadius, 2, 10); 
+                // Hauptzylinder (Gepanzerte Hülle)
+                addCylinder(xOffset, 0, 15, -30, eRadius, 10, true); 
+                // Abgas-Streben (Skelett am Heck)
+                addCylinder(xOffset, 0, -30, -50, exRadius, 8, true); 
+                // Deflektor-Ringe (Die ikonischen Vektor-Ringe am Heck)
+                addCircle(xOffset, 0, -50, exRadius, 12);
+                addCircle(xOffset, 0, -35, eRadius+1, 12);
+                addCircle(xOffset, 0, -42, eRadius+1, 12);
+                addCircle(xOffset, 0, -49, eRadius+1, 12);
+                // Stützstreben für die Deflektor-Ringe
+                for(let i=0; i<4; i++) {
+                    const angle = (i/4) * Math.PI * 2;
+                    const px = xOffset + Math.cos(angle)*(eRadius+1);
+                    const py = Math.sin(angle)*(eRadius+1);
+                    addE(addV(px, py, -35), addV(px, py, -49));
+                }
+            });
         }
         
-        let pitch = 0.45; // Neigungswinkel
-        let yaw = 0; // Rotation um eigene Axen
-        let isDragging = false;
-        let lastMouseX = 0;
-        let lastMouseY = 0;
+        // Modell initial generieren
+        buildYWing();
 
-        // Mouse- & Touch-Steuerung
+        // V-Formation Offsets der Y-Wings im 3D-Raum
+        const formationShips = [
+            { dx: 0, dy: 0, dz: 60, color: "rgba(255, 255, 255, 0.95)", thickness: 1.5, text: "LEADER [S1]" },
+            { dx: -100, dy: -25, dz: -60, color: "rgba(255, 255, 255, 0.45)", thickness: 1.0, text: "WINGMAN LEFT [S2]" },
+            { dx: 100, dy: -25, dz: -60, color: "rgba(255, 255, 255, 0.45)", thickness: 1.0, text: "WINGMAN RIGHT [S3]" }
+        ];
+
+        // Maus-/Touch-Interaktion für Drehung
         canvas.addEventListener('mousedown', (e) => {
             isDragging = true;
-            lastMouseX = e.clientX;
-            lastMouseY = e.clientY;
+            previousMousePosition = { x: e.clientX, y: e.clientY };
         });
 
-        window.addEventListener('mouseup', () => { isDragging = false; });
-        
         canvas.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
-            const deltaX = e.clientX - lastMouseX;
-            const deltaY = e.clientY - lastMouseY;
-            yaw += deltaX * 0.007;
-            pitch += deltaY * 0.007;
-            lastMouseX = e.clientX;
-            lastMouseY = e.clientY;
+            const deltaX = e.clientX - previousMousePosition.x;
+            const deltaY = e.clientY - previousMousePosition.y;
+
+            angleY += deltaX * 0.007;
+            angleX += deltaY * 0.007;
+
+            previousMousePosition = { x: e.clientX, y: e.clientY };
         });
 
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Touch-Events für Mobilgeräte
         canvas.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            lastMouseX = e.touches[0].clientX;
-            lastMouseY = e.touches[0].clientY;
-        });
-
-        window.addEventListener('touchend', () => { isDragging = false; });
+            if (e.touches.length === 1) {
+                isDragging = true;
+                previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }
+        }, { passive: true });
 
         canvas.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            const deltaX = e.touches[0].clientX - lastMouseX;
-            const deltaY = e.touches[0].clientY - lastMouseY;
-            yaw += deltaX * 0.007;
-            pitch += deltaY * 0.007;
-            lastMouseX = e.touches[0].clientX;
-            lastMouseY = e.touches[0].clientY;
+            if (!isDragging || e.touches.length !== 1) return;
+            const deltaX = e.touches[0].clientX - previousMousePosition.x;
+            const deltaY = e.touches[0].clientY - previousMousePosition.y;
+
+            angleY += deltaX * 0.007;
+            angleX += deltaY * 0.007;
+
+            previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }, { passive: true });
+
+        canvas.addEventListener('touchend', () => {
+            isDragging = false;
         });
 
-        // Hochauflösende Koordinatendaten des BTL-B Bombers (Verstärkte Streben und Sub-Elemente)
-        // Komplett restauriertes Cockpit- & laserfront-Design für maximale Ästhetik
-        const vertices = [
-            // Cockpit/Nase (0-7)
-            {x: 0, y: 0.05, z: 2.1},      // 0: Nasenspitze (Zentral-Front)
-            {x: -0.22, y: 0.05, z: 1.2},  // 1: Cockpit-Basis hinten links
-            {x: 0.22, y: 0.05, z: 1.2},   // 2: Cockpit-Basis hinten rechts
-            {x: 0, y: -0.2, z: 1.2},      // 3: Kanzeldach hinten
-            {x: 0, y: 0.2, z: 1.2},       // 4: Cockpit-Boden hinten
-            {x: 0, y: -0.1, z: 1.7},      // 5: Kanzeldach vorn (stromlinienförmiger Schnittpunkt)
-            {x: -0.06, y: 0.08, z: 2.1},  // 6: Bugkanone links Basis am Rumpf
-            {x: 0.06, y: 0.08, z: 2.1},   // 7: Bugkanone rechts Basis am Rumpf
+        // 3D-Punkte-Projektion
+        function project(x, y, z) {
+            // Rotation um die Y-Achse (Yaw)
+            let cosY = Math.cos(angleY), sinY = Math.sin(angleY);
+            let x1 = x * cosY - z * sinY;
+            let z1 = x * sinY + z * cosY;
 
-            // Rumpf/Mittelteil (8-11)
-            {x: -0.35, y: 0.15, z: -0.5},  // 8: Rumpf Links-Vorne
-            {x: 0.35, y: 0.15, z: -0.5},   // 9: Rumpf Rechts-Vorne
-            {x: -0.35, y: -0.15, z: -1.2}, // 10: Rumpf Links-Hinten
-            {x: 0.35, y: -0.15, z: -1.2},  // 11: Rumpf Rechts-Hinten
+            // Rotation um die X-Achse (Pitch)
+            let cosX = Math.cos(angleX), sinX = Math.sin(angleX);
+            let y2 = y * cosX - z1 * sinX;
+            let z2 = y * sinX + z1 * cosX;
 
-            // Astromech-Kuppel & Befestigungsring (12-15)
-            {x: 0, y: -0.3, z: 0.3},      // 12: Astromech Kuppel-Zentrum
-            {x: -0.12, y: -0.22, z: 0.45}, // 13: Astromech Ring vorn-links
-            {x: 0.12, y: -0.22, z: 0.45},  // 14: Astromech Ring vorn-rechts
-            {x: 0, y: -0.18, z: 0.2},      // 15: Astromech Basis hinten
-
-            // Triebwerk Links - Gondel (16-25)
-            {x: -1.8, y: -0.05, z: 0.7},   // 16: Gondel-Spitze vorn (Zentrum)
-            {x: -1.55, y: -0.3, z: 0.7},   // 17: Front-Ring oben-links
-            {x: -2.05, y: -0.3, z: 0.7},   // 18: Front-Ring oben-rechts
-            {x: -1.8, y: 0.2, z: 0.7},     // 19: Front-Ring unten
-            {x: -1.55, y: -0.3, z: -2.3},  // 20: Heck-Ring links-oben
-            {x: -2.05, y: -0.3, z: -2.3},  // 21: Heck-Ring rechts-oben
-            {x: -1.8, y: 0.2, z: -2.3},    // 22: Heck-Ring unten
-            {x: -1.8, y: -0.05, z: -2.6},  // 23: Schubdüse Auslass
-            {x: -1.8, y: -0.05, z: -0.8},  // 24: Flügelstrebe Triebwerkzentrum
-            {x: -1.8, y: -0.1, z: 0.0},    // 25: Gondel-Mittelring oben
-
-            // Triebwerk Rechts - Gondel (26-35)
-            {x: 1.8, y: -0.05, z: 0.7},    // 26: Gondel-Spitze vorn (Zentrum)
-            {x: 2.05, y: -0.3, z: 0.7},    // 27: Front-Ring oben-links
-            {x: 1.55, y: -0.3, z: 0.7},    // 28: Front-Ring oben-rechts
-            {x: 1.8, y: 0.2, z: 0.7},      // 29: Front-Ring unten
-            {x: 2.05, y: -0.3, z: -2.3},   // 30: Heck-Ring links-oben
-            {x: 1.55, y: -0.3, z: -2.3},   // 31: Heck-Ring rechts-oben
-            {x: 1.8, y: 0.2, z: -2.3},     // 32: Heck-Ring unten
-            {x: 1.8, y: -0.05, z: -2.6},   // 33: Schubdüse Auslass
-            {x: 1.8, y: -0.05, z: -0.8},   // 34: Flügelstrebe Triebwerkzentrum
-            {x: 1.8, y: -0.1, z: 0.0},     // 35: Gondel-Mittelring oben
-
-            // Geschützturm & Doppelrohre hinten (36-40)
-            {x: 0, y: -0.42, z: 0.95},     // 36: Turmsockel
-            {x: -0.06, y: -0.68, z: 0.5},  // 37: Ionenrohr links oben
-            {x: 0.06, y: -0.68, z: 0.5},   // 38: Ionenrohr rechts oben
-            {x: -0.06, y: -0.68, z: 0.8},  // 39: Ionenrohr links hinten
-            {x: 0.06, y: -0.68, z: 0.8},   // 40: Ionenrohr rechts hinten
+            // Einfache perspektivische Projektion
+            const fov = 350;
+            const distance = 250;
+            const scale = fov / (z2 + distance);
             
-            // Heckdetails (41-42)
-            {x: 0, y: 0.15, z: -1.7},      // 41: Sensorstrebe Ende
-            {x: 0, y: -0.15, z: -1.7},     // 42: Deflektorelement unten
+            const projX = x1 * scale + width / 2;
+            const projY = y2 * scale + height / 2;
 
-            // Neue, ultra-ästhetische Buglaserspitzen für parallel verlaufende Laserläufe (43-44)
-            {x: -0.06, y: 0.08, z: 2.55},  // 43: Linke Lasermündung (perfekt parallel)
-            {x: 0.06, y: 0.08, z: 2.55}    // 44: Rechte Lasermündung (perfekt parallel)
-        ];
-
-        // Hochpräzises Vektor-Liniennetz für ein extrem sauberes Drahtgittermodell
-        const edges = [
-            // Cockpithülle & Nasensegmentierung (Schnittiges, keilförmiges Kanzel-Design)
-            [0, 1], [0, 2], [0, 3], [0, 4], [0, 5],
-            [1, 3], [2, 3], [1, 4], [2, 4], [1, 2],
-            [3, 5], [1, 5], [2, 5],
-            // Parallele Bug-Laserrohre (Verhindert unschöne schräge Linien)
-            [6, 43], [7, 44],
-            // Rumpfanbindung & Trägerstruktur
-            [1, 8], [2, 9], [4, 8], [4, 9], [3, 8], [3, 9],
-            [8, 9], [8, 10], [9, 11], [10, 11],
-            // Heckbaugruppe
-            [10, 41], [11, 41], [10, 42], [11, 42], [41, 42],
-            // Astromech-Kuppelbau
-            [12, 13], [12, 14], [12, 15], [13, 14], [14, 15], [15, 13], [8, 13], [9, 14],
-            // Flügelverbindungen zu den Triebwerken
-            [8, 16], [9, 26], [10, 24], [11, 34],
-            // Triebwerk Links (Symmetrische Gondelgeometrie)
-            [16, 17], [16, 18], [16, 19], [17, 18], [18, 19], [19, 17], // Frontring
-            [20, 21], [21, 22], [22, 20],                               // Heckring
-            [17, 20], [18, 21], [19, 22], [24, 16], [24, 23],            // Gondelstreben
-            [20, 23], [21, 23], [22, 23],                               // Schubdüsenanschluss
-            [25, 17], [25, 18], [25, 19], [25, 20], [25, 21], [25, 22], // Mittelstabilisator
-            // Triebwerk Rechts (Symmetrische Gondelgeometrie)
-            [26, 27], [26, 28], [26, 29], [27, 28], [28, 29], [29, 27], // Frontring
-            [30, 31], [31, 32], [32, 30],                               // Heckring
-            [27, 30], [28, 31], [29, 32], [34, 26], [34, 33],            // Gondelstreben
-            [30, 33], [31, 33], [32, 33],                               // Schubdüsenanschluss
-            [35, 27], [35, 28], [35, 29], [35, 30], [35, 31], [35, 32], // Mittelstabilisator
-            // Abwehrgeschützturm
-            [3, 36], [36, 37], [36, 38], [37, 38], [37, 39], [38, 40], [39, 40]
-        ];
-
-        // Zeichnet ein einzelnes hochdetailliertes Y-Wing-Schiff an einer Formations-Position (Rot-Akzentuiertes Vektorhologramm)
-        function drawShipInstance(cosP, sinP, cosY, sinY, centerX, centerY, offsetX, offsetY, offsetZ, scale, strokeStyle) {
-            const projected = [];
-
-            vertices.forEach(v => {
-                // Skalierung des Einzelschiffs
-                let lx = v.x * scale;
-                let ly = v.y * scale;
-                let lz = v.z * scale;
-
-                // Weiträumige, dynamische V-Formation
-                let fx = lx + offsetX;
-                let fy = ly + offsetY;
-                let fz = lz + offsetZ;
-
-                // Rotation um Y (Yaw)
-                let x1 = fx * cosY - fz * sinY;
-                let z1 = fx * sinY + fz * cosY;
-                
-                // Rotation um X (Pitch)
-                let y2 = fy * cosP - z1 * sinP;
-                let z2 = fy * sinP + z1 * cosP;
-
-                // Projektion auf 2D mit Perspektive
-                const zoom = canvas.width * 0.18;
-                const distance = 5.8; // Erhöhte Distanz für fantastische räumliche Tiefe
-                const perspective = zoom / (distance + lz);
-                const x2d = centerX + x1 * perspective;
-                const y2d = centerY - y2 * perspective;
-
-                projected.push({x: x2d, y: y2d});
-            });
-
-            // Gitterlinien zeichnen
-            ctx.strokeStyle = strokeStyle;
-            ctx.lineWidth = 1.0;
-            
-            edges.forEach(edge => {
-                const p1 = projected[edge[0]];
-                const p2 = projected[edge[1]];
-                ctx.beginPath();
-                ctx.moveTo(p1.x, p1.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.stroke();
-            });
-
-            // Scheitelpunkte (Knoteneffekte)
-            ctx.fillStyle = strokeStyle;
-            projected.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
-                ctx.fill();
-            });
+            return { x: projX, y: projY, z: z2 };
         }
 
-        // Live Render-Schleife der weiten, hochauflösenden V-Formation (Einheitlich in rotem Vektor-Hologramm-Stil)
-        function drawVectorModel() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Taktischer Radarhintergrund (Kreise)
-            ctx.strokeStyle = 'rgba(255, 0, 0, 0.05)';
+        // Haupt-Animation-Loop
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Raster-Linien im Hintergrund zeichnen (Holo-HUD Look)
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.02)";
             ctx.lineWidth = 1;
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            
-            for(let r = 50; r < canvas.width / 1.1; r += 50) {
+            const gridCells = 8;
+            for (let i = 0; i <= gridCells; i++) {
+                const pos = (i / gridCells) * width;
                 ctx.beginPath();
-                ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+                ctx.moveTo(pos, 0); ctx.lineTo(pos, height);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(0, pos); ctx.lineTo(width, pos);
                 ctx.stroke();
             }
 
-            // Radar Fadenkreuz-Linien
+            // Automatisches sanftes Rotieren, wenn der User nicht zieht
+            if (!isDragging) {
+                angleY += 0.0025;
+            }
+
+            // Zeichne jedes Schiff in der Formation
+            formationShips.forEach((ship) => {
+                const projectedVertices = [];
+
+                // Transformiere und projiziere alle Eckpunkte des Schiffes
+                ywingVertices.forEach((v) => {
+                    const worldX = v.x + ship.dx;
+                    const worldY = v.y + ship.dy;
+                    const worldZ = v.z + ship.dz;
+                    projectedVertices.push(project(worldX, worldY, worldZ));
+                });
+
+                // Zeichne die Kanten des Schiffes
+                ctx.strokeStyle = ship.color;
+                ctx.lineWidth = ship.thickness;
+
+                ywingEdges.forEach((edge) => {
+                    const p1 = projectedVertices[edge[0]];
+                    const p2 = projectedVertices[edge[1]];
+
+                    // Einfaches Backface-Culling/Distanz-Abschneider, um Überzeichnen hinter der Kamera zu vermeiden
+                    if (p1.z > -200 && p2.z > -200) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                });
+
+                // Beschriftung an der Cockpit-Spitze zeichnen
+                const nose = projectedVertices[0];
+                if (nose.z > -200) {
+                    ctx.fillStyle = ship.color;
+                    ctx.font = "bold 8px 'Orbitron', sans-serif";
+                    ctx.fillText(ship.text, nose.x + 10, nose.y - 10);
+                    
+                    // Verbindungsfaden von Beschriftung
+                    ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
+                    ctx.beginPath();
+                    ctx.moveTo(nose.x, nose.y);
+                    ctx.lineTo(nose.x + 8, nose.y - 8);
+                    ctx.stroke();
+                }
+            });
+
+            // Kreis-Fadenkreuz in der Mitte zeichnen
+            ctx.strokeStyle = "rgba(204, 0, 0, 0.15)";
+            ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(0, centerY); ctx.lineTo(canvas.width, centerY);
-            ctx.moveTo(centerX, 0); ctx.lineTo(centerX, canvas.height);
+            ctx.arc(width/2, height/2, width * 0.12, 0, Math.PI * 2);
             ctx.stroke();
 
-            const cosP = Math.cos(pitch);
-            const sinP = Math.sin(pitch);
-            const cosY = Math.cos(yaw);
-            const sinY = Math.sin(yaw);
-
-            // V-FORMATION (Alle 3 hochauflösenden Schiffe sind absolut identisch skaliert)
-            const holoColor = 'rgba(235, 35, 35, 0.85)';
-            const uniformScale = 0.72; // Absolut identischer Größenfaktor für alle Jäger
-
-            // 1. Rechter Flügelmann (Hinten-Rechts - weit außen)
-            drawShipInstance(cosP, sinP, cosY, sinY, centerX, centerY, 2.3, -0.4, -2.4, uniformScale, holoColor);
-
-            // 2. Linker Flügelmann (Hinten-Links - weit außen)
-            drawShipInstance(cosP, sinP, cosY, sinY, centerX, centerY, -2.3, -0.4, -2.4, uniformScale, holoColor);
-
-            // 3. Leitbomber (Zentrum-Vorne - markant im Vordergrund, symmetrische Skalierung)
-            drawShipInstance(cosP, sinP, cosY, sinY, centerX, centerY, 0, 0.4, 1.1, uniformScale, holoColor);
-
-            // Kontinuierliche Rotation
-            if (!isDragging) {
-                yaw += 0.0035;
-            }
-
-            requestAnimationFrame(drawVectorModel);
+            requestAnimationFrame(animate);
         }
 
+        // Initiiere nach dem Laden der Seite
         window.onload = function() {
-            resizeCanvas();
-            loadQuestion();
-            drawVectorModel();
-            selectSystem('las');
+            initQuiz();
+            animate();
         };
-
-        window.addEventListener('resize', resizeCanvas);
     </script>
 </body>
 </html>
